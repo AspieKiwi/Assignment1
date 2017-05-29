@@ -9,11 +9,13 @@ namespace Version_1
     [Serializable()]
     public abstract class clsBook
     {
+        protected string _ISBN;
         protected string _Title;
-        protected DateTime theDate = DateTime.Now;
-        protected decimal theValue;
-        protected decimal theQuantity;
-        protected decimal thePageNumbers;
+        protected DateTime _Date = DateTime.Now;
+        protected decimal _Value;
+        protected decimal _Quantity;
+        protected decimal _PageNumbers;
+        public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for NonFiction";
 
         public clsBook()
         {
@@ -22,47 +24,89 @@ namespace Version_1
 
         public abstract void EditDetails();
 
-        public static clsBook NewBook()
+        public static clsBook NewBook(char prChoice)
         {
-            char lcReply;
-            InputBox inputbox = new InputBox("Enter F for Fiction and N for Non-Fiction");
-            //inputBox.ShowDialog();
-            //if (inputBox.getAction() == true)
-            if (inputbox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            switch (char.ToUpper(prChoice))
             {
-                lcReply = Convert.ToChar(inputbox.getAnswer());
+                case 'F': return new clsFiction();
+                case 'N': return new clsNonFiction();
+                default: return null;
+            }
+            //char lcReply;
+            //InputBox inputbox = new InputBox("Enter F for Fiction and N for Non-Fiction");
+            ////inputBox.ShowDialog();
+            ////if (inputBox.getAction() == true)
+            //if (inputbox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    lcReply = Convert.ToChar(inputbox.getAnswer());
 
-                switch (char.ToUpper(lcReply))
-                {
-                    case 'F': return new clsFiction();
-                    case 'N': return new clsNonFiction();
-                    default: return null;
-                }
-            }
-            else
-            {
-                inputbox.Close();
-                return null;
-            }
+            //    switch (char.ToUpper(lcReply))
+            //    {
+            //        case 'F': return new clsFiction();
+            //        case 'N': return new clsNonFiction();
+            //        default: return null;
+            //    }
+            //}
+            //else
+            //{
+            //    inputbox.Close();
+            //    return null;
+            //}
         }
         public override string ToString()
         {
-            return _Title + "\t" + theDate.ToShortDateString();
+            return _Title + "\t" + _Date.ToShortDateString();
         }
 
-        public string GetTitle()
+        public string Title
         {
-            return _Title;
+            get { return _Title; }
+            set { _Title = value; }
         }
 
-        public DateTime GetDate()
+        public string ISBN
         {
-            return theDate;
+            get { return _ISBN; }
+            set { _ISBN = value; }
         }
 
-        public decimal GetValue()
+        public DateTime Date
         {
-            return theValue;
+            get { return _Date; }
+            set { _Date = value; }
         }
+
+        public decimal Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
+
+        public decimal Quantity
+        {
+            get { return _Quantity; }
+            set { _Quantity = value; }
+        }
+
+        public decimal PageNumbers
+        {
+            get { return _PageNumbers; }
+            set { _PageNumbers = value; }
+        }
+
+    //    public string GetTitle()
+    //    {
+    //        return _Title;
+    //    }
+
+    //    public DateTime GetDate()
+    //    {
+    //        return theDate;
+    //    }
+
+    //    public decimal GetValue()
+    //    {
+    //        return theValue;
+    //    }
     }
 }

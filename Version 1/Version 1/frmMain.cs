@@ -17,17 +17,17 @@ namespace Version_1
             InitializeComponent();
         }
 
-        private clsPublisherList thePublisherList = new clsPublisherList();
-        private const string fileName = "books.xml";
+        private clsPublisherList _PublisherList = new clsPublisherList();
+        //private const string fileName = "books.xml";
 
-        private void UpdateDisplay()
+        private void updateDisplay()
         {
-            string[] lcDisplayList = new string[thePublisherList.Count];
+            string[] lcDisplayList = new string[_PublisherList.Count];
 
             lstPublishers.DataSource = null;
-            thePublisherList.Keys.CopyTo(lcDisplayList, 0);
+            _PublisherList.Keys.CopyTo(lcDisplayList, 0);
             lstPublishers.DataSource = lcDisplayList;
-            lblValue.Text = Convert.ToString(thePublisherList.GetTotalValue());
+            lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
         }
 
         private void lstPublishers_DoubleClick(object sennder, EventArgs e)
@@ -37,50 +37,68 @@ namespace Version_1
             lcKey = Convert.ToString(lstPublishers.SelectedItem);
             if(lcKey != null)
             {
-                thePublisherList.EditPublisher(lcKey);
-                UpdateDisplay();
+                _PublisherList.EditPublisher(lcKey);
+                updateDisplay();
             }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            Save();
+            try
+            {
+                _PublisherList.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "File Save Error");
+            }
             Close();
+            //Save();
+            //Close();
         }
 
-        private void Save()
-        {
-            try
-            {
-                System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+        //private void Save()
+        //{
+        //    try
+        //    {
+        //        System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
+        //        System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
+        //            new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 
-                lcFormatter.Serialize(lcFileStream, thePublisherList);
-                lcFileStream.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "File Save Error");
-            }
-        }
-        private void Retrieve()
-        {
-            try
-            {
-                System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "File Retrieve Error");
-            }
-        }
+        //        lcFormatter.Serialize(lcFileStream, thePublisherList);
+        //        lcFileStream.Close();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show(e.Message, "File Save Error");
+        //    }
+        //}
+        //private void Retrieve()
+        //{
+        //    try
+        //    {
+        //        System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
+        //        System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
+        //            new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show(e.Message, "File Retrieve Error");
+        //    }
+        //}
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Retrieve();
-            UpdateDisplay();
+            try
+            {
+                _PublisherList = clsPublisherList.RetrievePublisherList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Flie retrieve error");
+            }
+            updateDisplay();
+            //Retrieve();
+            //UpdateDisplay();
         }
     }
 

@@ -9,14 +9,15 @@ using System.Collections;
 namespace Version_1
 {
     [Serializable()]
-    public class clsBooksList : ArrayList
+    public class clsBooksList : List<clsBook>
     {
-        private static clsNameComparer theNameComparer = new clsNameComparer();
-        private static clsDateComparer theDateComparer = new clsDateComparer();
+        private static clsNameComparer _NameComparer = new clsNameComparer();
+        private static clsDateComparer _DateComparer = new clsDateComparer();
+        private byte _SortOrder;
 
-        public void AddBook()
+        public void AddBook(char prChoice)
         {
-            clsBook lcBook = clsBook.NewBook();
+            clsBook lcBook = clsBook.NewBook(prChoice);
             if (lcBook != null)
             {
                 Add(lcBook);
@@ -27,11 +28,15 @@ namespace Version_1
         {
             if (prIndex >= 0 && prIndex < this.Count)
             {
-                if (MessageBox.Show("Are you sure?", "Deleting book", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    this.RemoveAt(prIndex);
-                }
+                clsBook lcBook = (clsBook)this[prIndex];
+                lcBook.EditDetails();
+                //if (MessageBox.Show("Are you sure?", "Deleting book", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                //{
+                //    this.RemoveAt(prIndex);
+                //}
             }
+            else
+                throw new Exception("Sorry no book selected #" + Convert.ToString(prIndex));
         }
 
         public void EditBook(int prIndex)
@@ -52,19 +57,33 @@ namespace Version_1
             decimal lcTotal = 0;
             foreach (clsBook lcBook in this)
             {
-                lcTotal += lcBook.GetValue();
+                lcTotal += lcBook.Value;
             }
             return lcTotal;
+            //decimal lcTotal = 0;
+            //foreach (clsBook lcBook in this)
+            //{
+            //    lcTotal += lcBook.GetValue();
+            //}
+            //return lcTotal;
         }
 
         public void SortByName()
         {
-            Sort(theNameComparer);
+            Sort(_NameComparer);
+            _SortOrder = 0;
         }
 
         public void SortByDate()
         {
-            Sort(theDateComparer);
+            Sort(_DateComparer);
+            _SortOrder = 1;
+        }
+
+        public byte SortOrder
+        {
+            get { return _SortOrder; }
+            set { _SortOrder = value; }
         }
     }
 }

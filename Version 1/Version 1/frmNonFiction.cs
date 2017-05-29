@@ -15,18 +15,34 @@ namespace Version_1
             InitializeComponent();
         }
 
-        public void SetDetails(string prISBN, DateTime prDate, decimal prValue, decimal prQuantity, decimal prPageNumbers, string prDewey, string prType)
+        protected override void updateForm()
         {
-            base.SetDetails(prISBN, prDate, prValue, prQuantity, prPageNumbers);
-            txtDewey.Text = prDewey;
-            txtType.Text = prType;
+            base.updateForm();
+            clsNonFiction lcBook = (clsNonFiction)_Book;
+            txtDewey.Text = lcBook.Dewey;
+            txtType.Text = lcBook.Type;
         }
 
-        public virtual void GetDetails(ref string prISBN, ref DateTime prDate, ref decimal prValue, ref decimal prQuantity, ref decimal prPageNumbers, ref string prType, ref string prDewey)
+        protected override void pushData()
         {
-            base.GetDetails(ref prISBN, ref prDate, ref prValue, ref prQuantity, ref prPageNumbers);
-            prDewey = txtDewey.Text;
-            prType = txtType.Text;
+            base.pushData();
+            clsNonFiction lcBook = (clsNonFiction)_Book;
+            lcBook.Dewey = txtDewey.Text;
+            lcBook.Type = txtType.Text;
         }
+
+        //public void SetDetails(string prISBN, DateTime prDate, decimal prValue, decimal prQuantity, decimal prPageNumbers, string prDewey, string prType)
+        //{
+        //    base.SetDetails(prISBN, prDate, prValue, prQuantity, prPageNumbers);
+        //    txtDewey.Text = prDewey;
+        //    txtType.Text = prType;
+        //}
+
+        //public virtual void GetDetails(ref string prISBN, ref DateTime prDate, ref decimal prValue, ref decimal prQuantity, ref decimal prPageNumbers, ref string prType, ref string prDewey)
+        //{
+        //    base.GetDetails(ref prISBN, ref prDate, ref prValue, ref prQuantity, ref prPageNumbers);
+        //    prDewey = txtDewey.Text;
+        //    prType = txtType.Text;
+        //}
     }
 }

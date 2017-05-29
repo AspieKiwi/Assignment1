@@ -8,16 +8,24 @@ using System.Collections;
 
 namespace Version_1
 {
-    class clsDateComparer : IComparer
+    class clsDateComparer : IComparer<clsBook>
     {
-        public int Compare(Object x, Object y)
+        public int Compare(clsBook x, clsBook y)
         {
-            clsBook lcBookX = (clsBook)x;
-            clsBook lcBookY = (clsBook)y;
-            DateTime lcDateX = lcBookX.GetDate();
-            DateTime lcDateY = lcBookY.GetDate();
+            //clsBook lcBookX = (clsBook)x;
+            //clsBook lcBookY = (clsBook)y;
+            //DateTime lcDateX = lcBookX.GetDate();
+            //DateTime lcDateY = lcBookY.GetDate();
 
-            return lcDateX.CompareTo(lcDateY);
+            return x.Date.CompareTo(y.Date);
+        }
+    }
+
+    class clsDDateComparer : IComparer<clsBook>
+    {
+        public int Compare(clsBook x, clsBook y)
+        {
+            return y.Date.CompareTo(x.Date);
         }
     }
 }

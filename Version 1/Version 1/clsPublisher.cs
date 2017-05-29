@@ -9,42 +9,68 @@ namespace Version_1
     [Serializable()]
     public class clsPublisher
     {
-        private string name;
-        private string country;
+        private string _Name;
+        private string _Country;
 
-        private decimal theTotalValue;
+        private decimal _TotalValue;
 
-        private clsBooksList theBooksList;
-        private clsPublisherList thePublisherList;
+        private clsBooksList _BooksList;
+        private clsPublisherList _PublisherList;
 
-        private static frmPublisher publisherDialog = new frmPublisher();
-        private byte sortOrder;
+        private static frmPublisher _PublisherDialog = new frmPublisher();
+        //private byte sortOrder;
+
+        public clsPublisher() { }
 
         public clsPublisher(clsPublisherList prPublisherList)
         {
-            theBooksList = new clsBooksList();
-            thePublisherList = prPublisherList;
+            _BooksList = new clsBooksList();
+            _PublisherList = prPublisherList;
             EditDetails();
         }
 
         public void EditDetails()
         {
-            publisherDialog.SetDetails(name, country, sortOrder, theBooksList, thePublisherList);
-            if (publisherDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                publisherDialog.GetDetails(ref name, ref country, ref sortOrder);
-                theTotalValue = theBooksList.GetTotalValue();
-            }
+            _PublisherDialog.SetDetails(this);
+            _TotalValue = _BooksList.GetTotalValue();
+            //publisherDialog.SetDetails(name, country, sortOrder, theBooksList, thePublisherList);
+            //if (publisherDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    publisherDialog.GetDetails(ref name, ref country, ref sortOrder);
+            //    theTotalValue = theBooksList.GetTotalValue();
+            //}
         }
 
-        public string GetKey()
+        public bool IsDuplicate(string prPublisherName)
         {
-            return name;
+            return _PublisherList.ContainsKey(prPublisherName);
         }
 
-        public decimal GetBooksValue()
+        public string Name
         {
-            return theTotalValue;
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        public string Country
+        {
+            get { return _Country; }
+            set { _Country = value; }
+        }
+
+        //public string GetKey()
+        //{
+        //    return name;
+        //}
+
+        public decimal TotalValue
+        {
+            get { return _TotalValue; }
+        }
+
+        public clsBooksList BooksList
+        {
+            get { return _BooksList; }
         }
     }
 }
