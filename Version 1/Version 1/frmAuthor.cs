@@ -1,189 +1,189 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Version_1
 {
     public partial class frmAuthor : Form
     {
-        public frmAuthor()
-        {
-            InitializeComponent();
-        }
+        private clsAuthor _Artist;
+        //private clsWorksList _WorksList;
 
-        private clsAuthor _Author;
-       // private clsPublisherList thePublisherList;
-        private clsBooksList _BooksList;
-        //private byte sortOrder;
+        //private static Dictionary<string, frmArtist> _ArtistFormList =
+            //new Dictionary<string, frmArtist>();
 
-        private static Dictionary<clsAuthor, frmAuthor> _AuthorFormList = new Dictionary<clsAuthor, frmAuthor>();
-
-        public static void Run(clsAuthor prAuthor)
-        {
-            frmAuthor lcAuthorForm;
-            if(!_AuthorFormList.TryGetValue(prAuthor, out lcAuthorForm))
-            {
-                lcAuthorForm = new frmAuthor();
-                _AuthorFormList.Add(prAuthor, lcAuthorForm);
-                lcAuthorForm.SetDetails(prAuthor);
-            }
-            else
-            {
-                lcAuthorForm.Show();
-                lcAuthorForm.Activate();
-            }
-        }
-
-        private void updateTitle(string prBookName)
-        {
-            if (!string.IsNullOrEmpty(prBookName))
-                Text = "Author Details - " + prBookName;
-        }
-        private void UpdateDisplay()
-        {
-            //txtName.Enabled = txtName.Text == "";
-            if (_BooksList.SortOrder == 0)
-            {
-                _BooksList.SortByName();
-                rbByName.Checked = true;
-            }
-            else
-            {
-                _BooksList.SortByDate();
-                rbByDate.Checked = true;
-            }
-
-            lstBooks.DataSource = null;
-            lstBooks.DataSource = _BooksList;
-            lblTotal.Text = Convert.ToString(_BooksList.GetTotalValue());
-        }
-
-
-        public void SetDetails(clsAuthor prAuthor)
-        {
-            _Author = prAuthor;
-            txtName.Enabled = string.IsNullOrEmpty(_Author.Name);
-            updateForm();
-            UpdateDisplay();
-            frmMain.Instance.BookNameChanged += new frmMain.Notify(updateTitle);
-            updateTitle(_Author.AuthorList.BookName);
-            Show();
-            //txtName.Text = prName;
-            //txtCountry.Text = prCountry;
-            //theBooksList = prBooksList;
-            //thePublisherList = prPublisherList;
-            //sortOrder = prSortOrder;
-            //ShowDialog();
-            //UpdateDisplay();
-        }
-
-        private void updateForm()
-        {
-            txtName.Text = _Author.Name;
-            txtCountry.Text = _Author.Country;
-            _BooksList = _Author.BooksList;
-        }
-
-        private void pushData()
-        {
-            _Author.Name = txtName.Text;
-            _Author.Country = txtCountry.Text;
-        }
-
-        //public void GetDetails(ref string prName, ref string prCountry, ref byte prSortOrder)
+        //private frmArtist()
         //{
-        //    prName = txtName.Text;
-        //    prCountry = txtCountry.Text;
-        //    prSortOrder = sortOrder;
+           // InitializeComponent();
         //}
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        public static void Run(string prArtistName)
         {
-            int lcIndex = lstBooks.SelectedIndex;
-
-            if (lcIndex >= 0 && MessageBox.Show("Are you sure", "Deleting Book", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                _BooksList.RemoveAt(lcIndex);
-                UpdateDisplay();
-            }
-            //theBooksList.DeleteBook(lstBooks.SelectedIndex);
-            //UpdateDisplay();
+           // frmArtist lcArtistForm;
+            //if (string.IsNullOrEmpty(prArtistName) ||
+                //!_ArtistFormList.TryGetValue(prArtistName, out lcArtistForm))
+            //{
+               // lcArtistForm = new frmArtist();
+                //if (string.IsNullOrEmpty(prArtistName))
+                 //   lcArtistForm.SetDetails(new clsArtist());
+                //else
+                //{
+                   // _ArtistFormList.Add(prArtistName, lcArtistForm);
+                  //  lcArtistForm.refreshFormFromDB(prArtistName);
+               // }
+            //}
+            //else
+            //{
+              // lcArtistForm.Show();
+                //lcArtistForm.Activate();
+            //}
         }
+
+        //async private void refreshFormFromDB(string prArtistName)
+        //{
+        //    //SetDetails(await ServiceClient.GetArtistAsync(prArtistName));
+        //}
+
+
+
+
+
+        private void updateTitle(string prGalleryName)
+        {
+            if (!string.IsNullOrEmpty(prGalleryName))
+                Text = "Artist Details - " + prGalleryName;
+        }
+
+        private void UpdateDisplay()
+        {
+            //if (_WorksList.SortOrder == 0)
+            // {
+            //     _WorksList.SortByName();
+            // rbByName.Checked = true;
+            //  }
+            //else
+            // {
+            //      _WorksList.SortByDate();
+            //     rbByDate.Checked = true;
+            // }
+
+            //  lstWorks.DataSource = null;
+            //  lstWorks.DataSource = _WorksList;
+            //   lblTotal.Text = Convert.ToString(_WorksList.GetTotalValue());
+        }
+
+        public void UpdateForm()
+        {
+            txtName.Text = _Artist.Name;
+            //txtSpeciality.Text = _Artist.Speciality;
+            //txtPhone.Text = _Artist.Phone;
+            //_WorksList = _Artist.WorksList;
+
+            //frmMain.Instance.GalleryNameChanged += new frmMain.Notify(updateTitle);
+            //updateTitle(_Artist.ArtistList.GalleryName);
+        }
+
+        //public void SetDetails(clsArtist prArtist)
+        //{
+        //    _Artist = prArtist;
+        //    txtName.Enabled = string.IsNullOrEmpty(_Artist.Name);
+        //    UpdateForm();
+        //    UpdateDisplay();
+        //    frmMain.Instance.GalleryNameChanged += new frmMain.Notify(updateTitle);
+        //    // updateTitle(_Artist.ArtistList.GalleryName);
+        //    Show();
+        //}
+
+        //private void pushData()
+        //{
+        //    _Artist.Name = txtName.Text;
+        //    _Artist.Speciality = txtSpeciality.Text;
+        //    _Artist.Phone = txtPhone.Text;
+        //    //_WorksList.SortOrder = _SortOrder; // no longer required, updated with each rbByDate_CheckedChanged
+        //}
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string lcReply = new InputBox(clsBook.FACTORY_PROMPT).Answer;
-            if (!string.IsNullOrEmpty(lcReply))
+            //string lcReply = new InputBox(clsWork.FACTORY_PROMPT).Answer;
+            // if (!string.IsNullOrEmpty(lcReply))
             {
-                _BooksList.AddBook(lcReply[0]);
+                //  _WorksList.AddWork(lcReply[0]);
                 UpdateDisplay();
-                frmMain.Instance.updateDisplay();
+                ///frmMain.Instance.UpdateDisplay();
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            if (isValid() == true)
-            {
-                pushData();
-                Close();
-            }
-        }
-
-        public virtual Boolean isValid()
-        {
-            if (txtName.Enabled && txtName.Text != "")
-                if (_Author.IsDuplicate(txtName.Text))
-                {
-                    MessageBox.Show("Publisher with that name already exsits!", "Error adding Publisher");
-                    return false;
-                }
-                else
-                    return true;
-            else
-                return true;
-            //if (txtName.Enabled && txtName.Text != "")
-            //    if (theBooksList.Contains(txtName.Text))
-            //    {
-            //        MessageBox.Show("Publisher with that name already exists!");
-            //        return false;
-            //    }
-            //    else
-            //        return true;
-            //else
-            //    return true;
-        }
-        private void lstBooks_DoubleClick(object sender, EventArgs e)
+        private void lstWorks_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                _BooksList.EditBook(lstBooks.SelectedIndex);
+                //   _WorksList.EditWork(lstWorks.SelectedIndex);
                 UpdateDisplay();
+                //frmMain.Instance.UpdateDisplay();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //int lcIndex = lstBooks.SelectedIndex;
-            //if (lcIndex >= 0)
-            //{
-            //    theBooksList.EditBook(lcIndex);
-            //    UpdateDisplay();
-            //}
         }
 
-        private void rByDate_CheckedChanged(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            _BooksList.SortOrder = Convert.ToByte(rbByDate.Checked);
+            //int lcIndex = lstWorks.SelectedIndex;
+
+            //if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //_WorksList.RemoveAt(lcIndex);
+                UpdateDisplay();
+              //  frmMain.Instance.UpdateDisplay();
+            }
+        }
+
+        //private async void btnClose_Click(object sender, EventArgs e)
+        //{
+        //    if (isValid() == true)
+        //        try
+        //        {
+        //            //pushData();
+        //            if (txtName.Enabled)
+        //            {
+        //                //MessageBox.Show(await ServiceClient.InsertArtistAsync(_Artist));
+        //                //frmMain.Instance.UpdateDisplay();
+        //                txtName.Enabled = false;
+        //            }
+        //            else
+        //               // MessageBox.Show(await ServiceClient.UpdateArtistAsync(_Artist));
+        //            Hide();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //}
+
+        private Boolean isValid()
+        {
+            // if (txtName.Enabled && txtName.Text != "")
+            //if (_Artist.IsDuplicate(txtName.Text))
+            // {
+            //  MessageBox.Show("Artist with that name already exists!", "Error adding artist");
+            //  return false;
+            // }
+            //else
+            // return true;
+            //else
+            return true;
+        }
+
+        private void rbByDate_CheckedChanged(object sender, EventArgs e)
+        {
+            //  _WorksList.SortOrder = Convert.ToByte(rbByDate.Checked);
             UpdateDisplay();
-            //sortOrder = Convert.ToByte(rbByDate.Checked);
-            //UpdateDisplay();
+        }
+
+        private void frmArtist_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

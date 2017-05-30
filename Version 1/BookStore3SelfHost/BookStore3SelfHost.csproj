@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5AE75EAB-02BB-4BAB-ACC0-75C9D46A6D57}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{A0428876-E3F7-4A8F-BAF6-A91E79C50F1B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Version_1</RootNamespace>
-    <AssemblyName>Version 1</AssemblyName>
+    <RootNamespace>BookStore3SelfHost</RootNamespace>
+    <AssemblyName>BookStore3SelfHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,21 +32,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Version_1.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
@@ -59,103 +56,19 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsBook.cs" />
-    <Compile Include="clsBooksList.cs" />
-    <Compile Include="clsDateComparer.cs" />
-    <Compile Include="clsFiction.cs" />
-    <Compile Include="clsNameComparer.cs" />
-    <Compile Include="clsNonFiction.cs" />
-    <Compile Include="clsAuthor.cs" />
-    <Compile Include="clsAuthorList.cs" />
+    <Compile Include="clsDbConnection.cs" />
+    <Compile Include="BookController.cs" />
     <Compile Include="DTO.cs" />
-    <Compile Include="frmBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBook.Designer.cs">
-      <DependentUpon>frmBook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmFiction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFiction.Designer.cs">
-      <DependentUpon>frmFiction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmNonFiction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNonFiction.Designer.cs">
-      <DependentUpon>frmNonFiction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmAuthor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAuthor.Designer.cs">
-      <DependentUpon>frmAuthor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InputBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InputBox.Designer.cs">
-      <DependentUpon>InputBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmBook.resx">
-      <DependentUpon>frmBook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFiction.resx">
-      <DependentUpon>frmFiction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNonFiction.resx">
-      <DependentUpon>frmNonFiction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAuthor.resx">
-      <DependentUpon>frmAuthor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InputBox.resx">
-      <DependentUpon>InputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="System\Runtime\Serialization\Formatters\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

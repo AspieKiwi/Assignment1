@@ -14,7 +14,7 @@ namespace Version_1
     {
         private static readonly frmMain _Instance = new frmMain();
 
-        private clsAuthorList _AuthorList = new clsAuthorList();
+        //private clsAuthorList _AuthorList = new clsAuthorList();
 
         public delegate void Notify(string prBookName);
 
@@ -38,20 +38,21 @@ namespace Version_1
         //private clsPublisherList _PublisherList = new clsPublisherList();
         //private const string fileName = "books.xml";
 
-        public void updateDisplay()
-        {
-            lstAuthors.DataSource = null;
-            string[] lcDisplayList = new string[_AuthorList.Count];
-            _AuthorList.Keys.CopyTo(lcDisplayList, 0);
-            lstAuthors.DataSource = lcDisplayList;
-            lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
-            //string[] lcDisplayList = new string[_PublisherList.Count];
+        //public async void updateDisplay()
+        //{
+        //    lstAuthors.DataSource = null;
+        //    //lstAuthors.DataSource = await ServiceClient.GetAuthorNamesAsync();
+        //   // string[] lcDisplayList = new string[_AuthorList.Count];
+        //    //_AuthorList.Keys.CopyTo(lcDisplayList, 0);
+        //   // lstAuthors.DataSource = lcDisplayList;
+        //    //lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
+        //    //string[] lcDisplayList = new string[_PublisherList.Count];
 
-            //lstPublishers.DataSource = null;
-            //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
-            //lstPublishers.DataSource = lcDisplayList;
-            //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
-        }
+        //    //lstPublishers.DataSource = null;
+        //    //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
+        //    //lstPublishers.DataSource = lcDisplayList;
+        //    //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
+        //}
 
         private void lstAuthors_DoubleClick(object sennder, EventArgs e)
         {
@@ -62,7 +63,8 @@ namespace Version_1
             {
                 try
                 {
-                    frmAuthor.Run(_AuthorList[lcKey]);
+                    frmAuthor.Run(lstAuthors.SelectedItem as string);
+                    //frmAuthor.Run(_AuthorList[lcKey]);
                 }
                 catch (Exception ex)
                 {
@@ -73,15 +75,15 @@ namespace Version_1
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                _AuthorList.Save();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "File Save Error");
-            }
-            Close();
+            //try
+            //{
+            //    //_AuthorList.Save();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "File Save Error");
+            //}
+            //Close();
             //Save();
             //Close();
         }
@@ -117,17 +119,17 @@ namespace Version_1
         //}
         private void frmMain_Load(object sender, EventArgs e)
         {
-            try
-            {
-                _AuthorList = clsAuthorList.RetrieveAuthorList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Flie retrieve error");
-            }
-            updateDisplay();
-            BookNameChanged += new Notify(updateTitle);
-            BookNameChanged(_AuthorList.BookName);
+            //try
+            //{
+            //    //_AuthorList = clsAuthorList.RetrieveAuthorList();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Flie retrieve error");
+            //}
+            //updateDisplay();
+            //BookNameChanged += new Notify(updateTitle);
+            //BookNameChanged(_AuthorList.BookName);
             //Retrieve();
             //UpdateDisplay();
         }
