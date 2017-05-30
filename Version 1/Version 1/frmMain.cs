@@ -12,33 +12,62 @@ namespace Version_1
 {
     public partial class frmMain : Form
     {
+        private static readonly frmMain _Instance = new frmMain();
+
+        private clsAuthorList _AuthorList = new clsAuthorList();
+
+        public delegate void Notify(string prBookName);
+
+        public event Notify BookNameChanged;
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private clsPublisherList _PublisherList = new clsPublisherList();
-        //private const string fileName = "books.xml";
-
-        private void updateDisplay()
+        public static frmMain Instance
         {
-            string[] lcDisplayList = new string[_PublisherList.Count];
-
-            lstPublishers.DataSource = null;
-            _PublisherList.Keys.CopyTo(lcDisplayList, 0);
-            lstPublishers.DataSource = lcDisplayList;
-            lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
+            get { return frmMain._Instance; }
         }
 
-        private void lstPublishers_DoubleClick(object sennder, EventArgs e)
+        private void updateTitle(string prBookName)
+        {
+            if (!string.IsNullOrEmpty(prBookName))
+                Text = "Book Storage (v1) - " + prBookName;
+        }
+
+        //private clsPublisherList _PublisherList = new clsPublisherList();
+        //private const string fileName = "books.xml";
+
+        public void updateDisplay()
+        {
+            lstAuthors.DataSource = null;
+            string[] lcDisplayList = new string[_AuthorList.Count];
+            _AuthorList.Keys.CopyTo(lcDisplayList, 0);
+            lstAuthors.DataSource = lcDisplayList;
+            lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
+            //string[] lcDisplayList = new string[_PublisherList.Count];
+
+            //lstPublishers.DataSource = null;
+            //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
+            //lstPublishers.DataSource = lcDisplayList;
+            //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
+        }
+
+        private void lstAuthors_DoubleClick(object sennder, EventArgs e)
         {
             string lcKey;
 
-            lcKey = Convert.ToString(lstPublishers.SelectedItem);
+            lcKey = Convert.ToString(lstAuthors.SelectedItem);
             if(lcKey != null)
             {
-                _PublisherList.EditPublisher(lcKey);
-                updateDisplay();
+                try
+                {
+                    frmAuthor.Run(_AuthorList[lcKey]);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "This should never occur");
+                }
             }
         }
 
@@ -46,7 +75,7 @@ namespace Version_1
         {
             try
             {
-                _PublisherList.Save();
+                _AuthorList.Save();
             }
             catch (Exception ex)
             {
@@ -90,13 +119,15 @@ namespace Version_1
         {
             try
             {
-                _PublisherList = clsPublisherList.RetrievePublisherList();
+                _AuthorList = clsAuthorList.RetrieveAuthorList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Flie retrieve error");
             }
             updateDisplay();
+            BookNameChanged += new Notify(updateTitle);
+            BookNameChanged(_AuthorList.BookName);
             //Retrieve();
             //UpdateDisplay();
         }

@@ -28,32 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtType = new System.Windows.Forms.TextBox();
             this.txtDewey = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtType
-            // 
-            this.txtType.Location = new System.Drawing.Point(238, 241);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(100, 22);
-            this.txtType.TabIndex = 14;
-            // 
             // txtDewey
             // 
-            this.txtDewey.Location = new System.Drawing.Point(92, 254);
+            this.txtDewey.Location = new System.Drawing.Point(92, 252);
             this.txtDewey.Name = "txtDewey";
             this.txtDewey.Size = new System.Drawing.Size(100, 22);
-            this.txtDewey.TabIndex = 15;
+            this.txtDewey.TabIndex = 14;
             // 
             // frmNonFiction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(446, 361);
             this.Controls.Add(this.txtDewey);
-            this.Controls.Add(this.txtType);
             this.Name = "frmNonFiction";
-            this.Controls.SetChildIndex(this.txtType, 0);
             this.Controls.SetChildIndex(this.txtDewey, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -62,7 +52,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtDewey;
     }
 }

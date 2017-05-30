@@ -12,24 +12,11 @@ namespace Version_1
         private string _Dewey;
         private string _Type; // this disappears in the second version so where does it go?
 
-        [NonSerialized()]
-        private static frmNonFiction _nonFictionDialog;
-
+        public delegate void LoadNonFictionFormDelegate(clsNonFiction prNonFiction);
+        public static LoadNonFictionFormDelegate LoadNonFictionForm;
         public override void EditDetails()
         {
-            if (_nonFictionDialog == null)
-                _nonFictionDialog = new frmNonFiction();
-            _nonFictionDialog.SetDetails(this);
-            //if (nonFictionDialog == null)
-            //{
-            //    nonFictionDialog = new frmNonFiction();
-            //}
-            //nonFictionDialog.SetDetails(_Title, theDate, theValue, theQuantity, thePageNumbers);
-            //if(nonFictionDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    nonFictionDialog.GetDetails(ref _Title, ref theDate, ref theValue, ref theQuantity, ref thePageNumbers, ref theType, ref theDewey);
-            //}
-
+            LoadNonFictionForm(this);
         }
 
         public string Dewey

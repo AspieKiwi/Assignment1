@@ -11,8 +11,6 @@ namespace Version_1
     [Serializable()]
     public class clsBooksList : List<clsBook>
     {
-        private static clsNameComparer _NameComparer = new clsNameComparer();
-        private static clsDateComparer _DateComparer = new clsDateComparer();
         private byte _SortOrder;
 
         public void AddBook(char prChoice)
@@ -57,7 +55,7 @@ namespace Version_1
             decimal lcTotal = 0;
             foreach (clsBook lcBook in this)
             {
-                lcTotal += lcBook.Value;
+                lcTotal += lcBook.PricePerItem;
             }
             return lcTotal;
             //decimal lcTotal = 0;
@@ -70,13 +68,13 @@ namespace Version_1
 
         public void SortByName()
         {
-            Sort(_NameComparer);
+            Sort(clsNameComparer.Instance);
             _SortOrder = 0;
         }
 
         public void SortByDate()
         {
-            Sort(_DateComparer);
+            Sort(clsDateComparer.Instance);
             _SortOrder = 1;
         }
 

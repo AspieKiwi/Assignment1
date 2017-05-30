@@ -8,28 +8,18 @@ using System.Windows.Forms;
 namespace Version_1
 {
     [Serializable()]
-    class clsFiction : clsBook
+    public class clsFiction : clsBook
     {
         private string _LetterCode;
         private string _Type;
 
-        [NonSerialized()]
-        private static frmFiction _FictionDialog;
+        public delegate void LoadFictionFormDelegate(clsFiction prFiction);
+        public static LoadFictionFormDelegate LoadFictionForm;
+
 
         public override void EditDetails()
         {
-            if (_FictionDialog == null)
-                _FictionDialog = new frmFiction();
-            _FictionDialog.SetDetails(this);
-            //if (fictionDialog == null)
-            //{
-            //    fictionDialog = new frmFiction();
-            //}
-            //fictionDialog.SetDetails(_Title, theDate, theValue, theQuantity, thePageNumbers);
-            //if (fictionDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    fictionDialog.GetDetails(ref _Title, ref theDate, ref theValue, ref theQuantity, ref thePageNumbers, ref theType, ref theLetterCode);
-            //}
+            LoadFictionForm(this);
         }
         public string LetterCode
         {

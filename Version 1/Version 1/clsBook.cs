@@ -11,10 +11,9 @@ namespace Version_1
     {
         protected string _ISBN;
         protected string _Title;
+        protected decimal _PricePerItem;
         protected DateTime _Date = DateTime.Now;
-        protected decimal _Value;
         protected decimal _Quantity;
-        protected decimal _PageNumbers;
         public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for NonFiction";
 
         public clsBook()
@@ -70,16 +69,18 @@ namespace Version_1
             set { _ISBN = value; }
         }
 
+
+
+        public decimal PricePerItem
+        {
+            get { return _PricePerItem; }
+            set { _PricePerItem = value;  }
+        }
+
         public DateTime Date
         {
             get { return _Date; }
             set { _Date = value; }
-        }
-
-        public decimal Value
-        {
-            get { return _Value; }
-            set { _Value = value; }
         }
 
         public decimal Quantity
@@ -88,25 +89,6 @@ namespace Version_1
             set { _Quantity = value; }
         }
 
-        public decimal PageNumbers
-        {
-            get { return _PageNumbers; }
-            set { _PageNumbers = value; }
-        }
 
-    //    public string GetTitle()
-    //    {
-    //        return _Title;
-    //    }
-
-    //    public DateTime GetDate()
-    //    {
-    //        return theDate;
-    //    }
-
-    //    public decimal GetValue()
-    //    {
-    //        return theValue;
-    //    }
     }
 }

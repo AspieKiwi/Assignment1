@@ -68,20 +68,20 @@ namespace Version_1
         {
             txtISBN.Text = _Book.ISBN;
             txtTitle.Text = _Book.Title;
+            //txtType.Text = _Book.Type;
+            txtPricePerItem.Text = _Book.PricePerItem.ToString();
             txtDate.Text = _Book.Date.ToShortDateString();
-            txtValue.Text = _Book.Value.ToString();
             txtQuantity.Text = _Book.Quantity.ToString();
-            txtPageNumbers.Text = _Book.PageNumbers.ToString();
         }
         
         protected virtual void pushData()
         {
             _Book.ISBN = txtISBN.Text;
             _Book.Title = txtTitle.Text;
+            //_Book.Type = txtType.Text;
+            _Book.PricePerItem = decimal.Parse(txtPricePerItem.Text);
             _Book.Date = DateTime.Parse(txtDate.Text);
-            _Book.Value = decimal.Parse(txtValue.Text);
             _Book.Quantity = decimal.Parse(txtQuantity.Text);
-            _Book.PageNumbers = decimal.Parse(txtPageNumbers.Text);
         }
     }
 }

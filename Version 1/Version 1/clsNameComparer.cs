@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace Version_1
 {
-    class clsNameComparer : IComparer<clsBook>
+    sealed class clsNameComparer : IComparer<clsBook>
     {
+        public static readonly clsNameComparer Instance = new clsNameComparer();
+
+        private clsNameComparer() { }
         public int Compare(clsBook x, clsBook y)
         {
-            string lcNameX = x.Title;
-            string lcNameY = y.Title;
+            clsBook bookClassX = x;
+            clsBook bookClassY = y;
+            string lcNameX = bookClassX.Title;
+            string lcNameY = bookClassY.Title;
 
             return lcNameX.CompareTo(lcNameY);
-            //clsBook bookClassX = (clsBook)x;
-            //clsBook bookClassY = (clsBook)y;
-            //string lcNameX = bookClassX.GetTitle();
-            //string lcNameY = bookClassY.GetTitle();
-
-            //return lcNameX.CompareTo(lcNameY);
         }
     }
 }

@@ -28,34 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt3letter = new System.Windows.Forms.TextBox();
-            this.txtType = new System.Windows.Forms.TextBox();
+            this.txtLetterCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txt3letter
+            // txtLetterCode
             // 
-            this.txt3letter.Location = new System.Drawing.Point(92, 256);
-            this.txt3letter.Name = "txt3letter";
-            this.txt3letter.Size = new System.Drawing.Size(100, 22);
-            this.txt3letter.TabIndex = 14;
-            // 
-            // txtType
-            // 
-            this.txtType.Location = new System.Drawing.Point(270, 256);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(100, 22);
-            this.txtType.TabIndex = 15;
+            this.txtLetterCode.Location = new System.Drawing.Point(92, 250);
+            this.txtLetterCode.Name = "txtLetterCode";
+            this.txtLetterCode.Size = new System.Drawing.Size(100, 22);
+            this.txtLetterCode.TabIndex = 14;
             // 
             // frmFiction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(446, 361);
-            this.Controls.Add(this.txtType);
-            this.Controls.Add(this.txt3letter);
+            this.Controls.Add(this.txtLetterCode);
             this.Name = "frmFiction";
-            this.Text = "Fiction";
-            this.Controls.SetChildIndex(this.txt3letter, 0);
-            this.Controls.SetChildIndex(this.txtType, 0);
+            this.Controls.SetChildIndex(this.txtLetterCode, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -63,7 +52,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt3letter;
-        private System.Windows.Forms.TextBox txtType;
+        private System.Windows.Forms.TextBox txtLetterCode;
     }
 }

@@ -10,21 +10,44 @@ using System.Windows.Forms;
 
 namespace Version_1
 {
-    public partial class frmPublisher : Form
+    public partial class frmAuthor : Form
     {
-        public frmPublisher()
+        public frmAuthor()
         {
             InitializeComponent();
         }
 
-        private clsPublisher _Publisher;
+        private clsAuthor _Author;
        // private clsPublisherList thePublisherList;
         private clsBooksList _BooksList;
         //private byte sortOrder;
 
+        private static Dictionary<clsAuthor, frmAuthor> _AuthorFormList = new Dictionary<clsAuthor, frmAuthor>();
+
+        public static void Run(clsAuthor prAuthor)
+        {
+            frmAuthor lcAuthorForm;
+            if(!_AuthorFormList.TryGetValue(prAuthor, out lcAuthorForm))
+            {
+                lcAuthorForm = new frmAuthor();
+                _AuthorFormList.Add(prAuthor, lcAuthorForm);
+                lcAuthorForm.SetDetails(prAuthor);
+            }
+            else
+            {
+                lcAuthorForm.Show();
+                lcAuthorForm.Activate();
+            }
+        }
+
+        private void updateTitle(string prBookName)
+        {
+            if (!string.IsNullOrEmpty(prBookName))
+                Text = "Author Details - " + prBookName;
+        }
         private void UpdateDisplay()
         {
-            txtName.Enabled = txtName.Text == "";
+            //txtName.Enabled = txtName.Text == "";
             if (_BooksList.SortOrder == 0)
             {
                 _BooksList.SortByName();
@@ -42,30 +65,35 @@ namespace Version_1
         }
 
 
-        public void SetDetails(clsPublisher prPublisher)
+        public void SetDetails(clsAuthor prAuthor)
         {
-            _Publisher = prPublisher;
+            _Author = prAuthor;
+            txtName.Enabled = string.IsNullOrEmpty(_Author.Name);
             updateForm();
+            UpdateDisplay();
+            frmMain.Instance.BookNameChanged += new frmMain.Notify(updateTitle);
+            updateTitle(_Author.AuthorList.BookName);
+            Show();
             //txtName.Text = prName;
             //txtCountry.Text = prCountry;
             //theBooksList = prBooksList;
             //thePublisherList = prPublisherList;
             //sortOrder = prSortOrder;
-            ShowDialog();
-            UpdateDisplay();
+            //ShowDialog();
+            //UpdateDisplay();
         }
 
         private void updateForm()
         {
-            txtName.Text = _Publisher.Name;
-            txtCountry.Text = _Publisher.Country;
-            _BooksList = _Publisher.BooksList;
+            txtName.Text = _Author.Name;
+            txtCountry.Text = _Author.Country;
+            _BooksList = _Author.BooksList;
         }
 
         private void pushData()
         {
-            _Publisher.Name = txtName.Text;
-            _Publisher.Country = txtCountry.Text;
+            _Author.Name = txtName.Text;
+            _Author.Country = txtCountry.Text;
         }
 
         //public void GetDetails(ref string prName, ref string prCountry, ref byte prSortOrder)
@@ -95,6 +123,7 @@ namespace Version_1
             {
                 _BooksList.AddBook(lcReply[0]);
                 UpdateDisplay();
+                frmMain.Instance.updateDisplay();
             }
         }
 
@@ -110,7 +139,7 @@ namespace Version_1
         public virtual Boolean isValid()
         {
             if (txtName.Enabled && txtName.Text != "")
-                if (_Publisher.IsDuplicate(txtName.Text))
+                if (_Author.IsDuplicate(txtName.Text))
                 {
                     MessageBox.Show("Publisher with that name already exsits!", "Error adding Publisher");
                     return false;

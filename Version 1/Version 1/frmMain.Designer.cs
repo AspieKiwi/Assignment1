@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstPublishers = new System.Windows.Forms.ListBox();
+            this.lstAuthors = new System.Windows.Forms.ListBox();
             this.lblValue = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lstPublishers
+            // lstAuthors
             // 
-            this.lstPublishers.FormattingEnabled = true;
-            this.lstPublishers.ItemHeight = 16;
-            this.lstPublishers.Location = new System.Drawing.Point(21, 85);
-            this.lstPublishers.Name = "lstPublishers";
-            this.lstPublishers.Size = new System.Drawing.Size(213, 244);
-            this.lstPublishers.TabIndex = 0;
+            this.lstAuthors.FormattingEnabled = true;
+            this.lstAuthors.ItemHeight = 16;
+            this.lstAuthors.Location = new System.Drawing.Point(21, 85);
+            this.lstAuthors.Name = "lstAuthors";
+            this.lstAuthors.Size = new System.Drawing.Size(213, 244);
+            this.lstAuthors.TabIndex = 0;
             // 
             // lblValue
             // 
@@ -68,7 +68,7 @@
             this.ClientSize = new System.Drawing.Size(384, 415);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.lblValue);
-            this.Controls.Add(this.lstPublishers);
+            this.Controls.Add(this.lstAuthors);
             this.Name = "frmMain";
             this.Text = "Main";
             this.ResumeLayout(false);
@@ -78,7 +78,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstPublishers;
+        private System.Windows.Forms.ListBox lstAuthors;
         private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Button btnQuit;
     }

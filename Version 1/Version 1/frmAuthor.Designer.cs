@@ -1,6 +1,6 @@
 ﻿namespace Version_1
 {
-    partial class frmPublisher
+    partial class frmAuthor
     {
         /// <summary>
         /// Required designer variable.

@@ -10,51 +10,44 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Version_1
 {
     [Serializable()]
-    public class clsPublisherList : SortedDictionary<string, clsPublisher>
+    public class clsAuthorList : SortedDictionary<string, clsAuthor>
     {
         private const string _FileName = "inventory.dat";
-        public void EditPublisher(string prKey)
-        {
-            clsPublisher lcPublisher;
-            lcPublisher = this[prKey];
-            if (lcPublisher != null)
-                lcPublisher.EditDetails();
-            else
-                throw new Exception("Sorry no publisher by this name");
-        }
-        public void NewPublisher()
-        {
-            clsPublisher lcPublisher = new clsPublisher(this);
-            if (lcPublisher.Name != "")
-                Add(lcPublisher.Name, lcPublisher);
-        }
+        private string _BookName;
+
 
         public decimal GetTotalValue()
         {
             decimal lcTotal = 0;
-            foreach (clsPublisher lcPublisher in Values)
+            foreach (clsAuthor lcAuthor in Values)
             {
-                lcTotal += lcPublisher.TotalValue;
+                lcTotal += lcAuthor.TotalValue;
             }
             return lcTotal;
         }
 
-        public static clsPublisherList RetrievePublisherList()
+        public string BookName
         {
-            clsPublisherList lcPublisherList;
+            get { return _BookName; }
+            set { _BookName = value; }
+        }
+
+        public static clsAuthorList RetrieveAuthorList()
+        {
+            clsAuthorList lcAuthorList;
             try
             {
                 System.IO.FileStream lcFileStream = new System.IO.FileStream(_FileName, System.IO.FileMode.Open);
                 BinaryFormatter lcFormatter = new BinaryFormatter();
-                lcPublisherList = (clsPublisherList)lcFormatter.Deserialize(lcFileStream);
+                lcAuthorList = (clsAuthorList)lcFormatter.Deserialize(lcFileStream);
                 lcFileStream.Close();
             }
             catch (Exception ex)
             {
-                lcPublisherList = new clsPublisherList();
+                lcAuthorList = new clsAuthorList();
                 throw new Exception("File Retrieve Error: " + ex.Message);
             }
-            return lcPublisherList;
+            return lcAuthorList;
         }
 
         public void Save()

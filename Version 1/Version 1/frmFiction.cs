@@ -10,38 +10,29 @@ namespace Version_1
 {
     public partial class frmFiction : Version_1.frmBook
     {
+        public static readonly frmFiction Instance = new frmFiction();
         public frmFiction()
         {
             InitializeComponent();
         }
+
+        public static void Run(clsFiction prFiction)
+        {
+            Instance.SetDetails(prFiction);
+        }
+
         protected override void updateForm()
         {
             base.updateForm();
-            clsFiction lcBook = (clsFiction)_Book;
-            txt3letter.Text = lcBook.LetterCode;
-            txtType.Text = lcBook.Type;
+            clsFiction lcBook = (clsFiction)this._Book;
+            txtLetterCode.Text = lcBook.LetterCode;
         }
 
         protected override void pushData()
         {
             base.pushData();
             clsFiction lcBook = (clsFiction)_Book;
-            lcBook.LetterCode = txt3letter.Text;
-            lcBook.Type = txtType.Text;
+            lcBook.LetterCode = txtLetterCode.Text;
         }
-
-        //public virtual void SetDetails(string prISBN, DateTime prDate, decimal prValue, decimal prQuantity, decimal prPageNumbers, string prType, string pr3Letter)
-        //{
-        //    base.SetDetails(prISBN, prDate, prValue, prQuantity, prPageNumbers);
-        //    txt3letter.Text = pr3Letter;
-        //    txtType.Text = prType;
-        //}
-
-        //public virtual void GetDetails(ref string prISBN, ref DateTime prDate, ref decimal prValue, ref decimal prQuantity, ref decimal prPageNumbers, ref string prType, ref string pr3Letter)
-        //{
-        //    base.GetDetails(ref prISBN, ref prDate, ref prValue, ref prQuantity, ref prPageNumbers);
-        //    pr3Letter = txt3letter.Text;
-        //    prType = txtType.Text;
-        //}
     }
 }
