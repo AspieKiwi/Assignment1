@@ -1,4 +1,4 @@
-﻿namespace BookStore
+﻿namespace BookStore3
 {
     partial class frmMain
     {
@@ -41,6 +41,7 @@
             this.lstAuthors.Name = "lstAuthors";
             this.lstAuthors.Size = new System.Drawing.Size(213, 244);
             this.lstAuthors.TabIndex = 0;
+            this.lstAuthors.SelectedIndexChanged += new System.EventHandler(this.lstAuthors_SelectedIndexChanged);
             // 
             // lblValue
             // 
@@ -71,6 +72,7 @@
             this.Controls.Add(this.lstAuthors);
             this.Name = "frmMain";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.frmMain_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

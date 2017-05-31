@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Version_1
+namespace BookStore
 {
     [Serializable()]
     public class clsAuthorList : SortedDictionary<string, clsAuthor>

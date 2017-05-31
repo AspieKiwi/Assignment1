@@ -2,41 +2,47 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace BookStore
+namespace BookStore3
 {
     public partial class frmAuthor : Form
     {
-        private clsAuthor _Artist;
+        private clsAuthor _Author;
         //private clsWorksList _WorksList;
 
-        //private static Dictionary<string, frmArtist> _ArtistFormList =
-            //new Dictionary<string, frmArtist>();
+        private static Dictionary<string, frmAuthor> _AuthorFormList = new Dictionary<string, frmAuthor>();
 
-        //private frmArtist()
-        //{
-           // InitializeComponent();
-        //}
-
-        public static void Run(string prArtistName)
+        private frmAuthor()
         {
-           // frmArtist lcArtistForm;
-            //if (string.IsNullOrEmpty(prArtistName) ||
-                //!_ArtistFormList.TryGetValue(prArtistName, out lcArtistForm))
-            //{
-               // lcArtistForm = new frmArtist();
-                //if (string.IsNullOrEmpty(prArtistName))
-                 //   lcArtistForm.SetDetails(new clsArtist());
-                //else
-                //{
-                   // _ArtistFormList.Add(prArtistName, lcArtistForm);
-                  //  lcArtistForm.refreshFormFromDB(prArtistName);
-               // }
-            //}
-            //else
-            //{
-              // lcArtistForm.Show();
-                //lcArtistForm.Activate();
-            //}
+            InitializeComponent();
+        }
+
+        public static void Run(string prAuthorName)
+        {
+            frmAuthor lcAuthorForm;
+            if (string.IsNullOrEmpty(prAuthorName) ||
+            !_AuthorFormList.TryGetValue(prAuthorName, out lcAuthorForm))
+            {
+                lcAuthorForm = new frmAuthor();
+                if (string.IsNullOrEmpty(prAuthorName))
+                    lcAuthorForm.SetDetails(new clsAuthor());
+                else
+                {
+                    _AuthorFormList.Add(prAuthorName, lcAuthorForm);
+                    lcAuthorForm.refreshFormFromDB(prAuthorName);
+                }
+            }
+            else
+            {
+                lcAuthorForm.Show();
+                lcAuthorForm.Activate();
+
+            }
+
+        }
+
+        private async void refreshFormFromDB(string prAuthorName)
+        {
+            SetDetails(await ServiceClient.GetAuthorAsync(prAuthorName));
         }
 
         //async private void refreshFormFromDB(string prArtistName)
@@ -74,7 +80,7 @@ namespace BookStore
 
         public void UpdateForm()
         {
-            txtName.Text = _Artist.Name;
+            //txtName.Text = _Artist.Name;
             //txtSpeciality.Text = _Artist.Speciality;
             //txtPhone.Text = _Artist.Phone;
             //_WorksList = _Artist.WorksList;
@@ -83,16 +89,16 @@ namespace BookStore
             //updateTitle(_Artist.ArtistList.GalleryName);
         }
 
-        //public void SetDetails(clsArtist prArtist)
-        //{
-        //    _Artist = prArtist;
-        //    txtName.Enabled = string.IsNullOrEmpty(_Artist.Name);
-        //    UpdateForm();
-        //    UpdateDisplay();
-        //    frmMain.Instance.GalleryNameChanged += new frmMain.Notify(updateTitle);
-        //    // updateTitle(_Artist.ArtistList.GalleryName);
-        //    Show();
-        //}
+       public void SetDetails (clsAuthor prAuthor)
+        {
+            _Author = prAuthor;
+            txtName.Enabled = string.IsNullOrEmpty(_Author.Name);
+            UpdateForm();
+            UpdateDisplay();
+            frmMain.Instance.BookNameChanged += new frmMain.Notify(updateTitle);
+            // updateTitle(_Artist.ArtistList.GalleryName);
+            Show();
+        }
 
         //private void pushData()
         //{

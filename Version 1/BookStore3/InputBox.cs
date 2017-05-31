@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookStore
+namespace BookStore3
 {
     public partial class InputBox : Form
     {

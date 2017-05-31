@@ -1,4 +1,4 @@
-﻿namespace Version_1
+﻿namespace BookStore
 {
     partial class frmBook
     {

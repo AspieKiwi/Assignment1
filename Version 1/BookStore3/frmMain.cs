@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookStore
+namespace BookStore3
 {
     public partial class frmMain : Form
     {
@@ -38,33 +38,32 @@ namespace BookStore
         //private clsPublisherList _PublisherList = new clsPublisherList();
         //private const string fileName = "books.xml";
 
-        //public async void updateDisplay()
-        //{
-        //    lstAuthors.DataSource = null;
-        //    //lstAuthors.DataSource = await ServiceClient.GetAuthorNamesAsync();
-        //   // string[] lcDisplayList = new string[_AuthorList.Count];
-        //    //_AuthorList.Keys.CopyTo(lcDisplayList, 0);
-        //   // lstAuthors.DataSource = lcDisplayList;
-        //    //lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
-        //    //string[] lcDisplayList = new string[_PublisherList.Count];
+        public async void updateDisplay()
+        {
+            lstAuthors.DataSource = null;
+            lstAuthors.DataSource = await ServiceClient.GetAuthorsAsync();
+            //string[] lcDisplayList = new string[_AuthorList.Count];
+           // _AuthorList.Keys.CopyTo(lcDisplayList, 0);
+            //lstAuthors.DataSource = lcDisplayList;
+            //lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
+            //string[] lcDisplayList = new string[_PublisherList.Count];
 
-        //    //lstPublishers.DataSource = null;
-        //    //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
-        //    //lstPublishers.DataSource = lcDisplayList;
-        //    //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
-        //}
+            //lstPublishers.DataSource = null;
+            //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
+            //lstPublishers.DataSource = lcDisplayList;
+            //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
+        }
 
         private void lstAuthors_DoubleClick(object sennder, EventArgs e)
         {
             string lcKey;
 
             lcKey = Convert.ToString(lstAuthors.SelectedItem);
-            if(lcKey != null)
+            if (lcKey != null)
             {
                 try
                 {
                     frmAuthor.Run(lstAuthors.SelectedItem as string);
-                    //frmAuthor.Run(_AuthorList[lcKey]);
                 }
                 catch (Exception ex)
                 {
@@ -127,11 +126,21 @@ namespace BookStore
             //{
             //    MessageBox.Show(ex.Message, "Flie retrieve error");
             //}
-            //updateDisplay();
+            
             //BookNameChanged += new Notify(updateTitle);
             //BookNameChanged(_AuthorList.BookName);
             //Retrieve();
             //UpdateDisplay();
+        }
+
+        private void frmMain_Load_1(object sender, EventArgs e)
+        {
+            updateDisplay();
+        }
+
+        private void lstAuthors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
