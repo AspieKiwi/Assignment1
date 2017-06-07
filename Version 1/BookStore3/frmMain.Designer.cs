@@ -41,7 +41,7 @@
             this.lstAuthors.Name = "lstAuthors";
             this.lstAuthors.Size = new System.Drawing.Size(213, 244);
             this.lstAuthors.TabIndex = 0;
-            this.lstAuthors.SelectedIndexChanged += new System.EventHandler(this.lstAuthors_SelectedIndexChanged);
+            this.lstAuthors.DoubleClick += new System.EventHandler(this.lstAuthors_DoubleClick);
             // 
             // lblValue
             // 

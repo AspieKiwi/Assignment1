@@ -80,8 +80,8 @@ namespace BookStore3
 
         public void UpdateForm()
         {
-            //txtName.Text = _Artist.Name;
-            //txtSpeciality.Text = _Artist.Speciality;
+            txtName.Text = _Author.Name;
+            txtCountry.Text = _Author.Country;
             //txtPhone.Text = _Artist.Phone;
             //_WorksList = _Artist.WorksList;
 

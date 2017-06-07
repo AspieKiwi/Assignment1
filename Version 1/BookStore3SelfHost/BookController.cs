@@ -28,7 +28,7 @@ namespace BookStore3SelfHost
                 lcAuthor.Add(new clsAuthor()
                 {
                     
-                    ID = (int)dr["AuthorID"],
+                    //ID = (int)dr["AuthorID"],
                     Name = (string)dr["AuthorName"],
                     Country = (string)dr["AuthorCountry"]
                 });

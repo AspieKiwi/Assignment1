@@ -41,7 +41,7 @@ namespace BookStore3
         public async void updateDisplay()
         {
             lstAuthors.DataSource = null;
-            lstAuthors.DataSource = await ServiceClient.GetAuthorsAsync();
+            lstAuthors.DataSource = await ServiceClient.GetAuthorNamesAsync();
             //string[] lcDisplayList = new string[_AuthorList.Count];
            // _AuthorList.Keys.CopyTo(lcDisplayList, 0);
             //lstAuthors.DataSource = lcDisplayList;
@@ -54,23 +54,6 @@ namespace BookStore3
             //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
         }
 
-        private void lstAuthors_DoubleClick(object sennder, EventArgs e)
-        {
-            string lcKey;
-
-            lcKey = Convert.ToString(lstAuthors.SelectedItem);
-            if (lcKey != null)
-            {
-                try
-                {
-                    frmAuthor.Run(lstAuthors.SelectedItem as string);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "This should never occur");
-                }
-            }
-        }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
@@ -138,9 +121,22 @@ namespace BookStore3
             updateDisplay();
         }
 
-        private void lstAuthors_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstAuthors_DoubleClick(object sender, EventArgs e)
         {
+            string lcKey;
 
+            lcKey = Convert.ToString(lstAuthors.SelectedItem);
+            if (lcKey != null)
+            {
+                try
+                {
+                    frmAuthor.Run(lstAuthors.SelectedItem as string);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "This should never occur");
+                }
+            }
         }
     }
 
