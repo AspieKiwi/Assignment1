@@ -47,6 +47,7 @@
             this.lstBooks.Name = "lstBooks";
             this.lstBooks.Size = new System.Drawing.Size(389, 164);
             this.lstBooks.TabIndex = 0;
+            this.lstBooks.DoubleClick += new System.EventHandler(this.lstBooks_DoubleClick);
             // 
             // txtName
             // 
@@ -121,7 +122,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // frmPublisher
+            // frmAuthor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +136,7 @@
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lstBooks);
-            this.Name = "frmPublisher";
+            this.Name = "frmAuthor";
             this.Text = "Publisher";
             this.ResumeLayout(false);
             this.PerformLayout();

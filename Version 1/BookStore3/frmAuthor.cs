@@ -122,19 +122,19 @@ namespace BookStore3
             }
         }
 
-        private void lstWorks_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                //   _WorksList.EditWork(lstWorks.SelectedIndex);
-                UpdateDisplay();
-                //frmMain.Instance.UpdateDisplay();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //private void lstWorks_DoubleClick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //   _WorksList.EditWork(lstWorks.SelectedIndex);
+        //        UpdateDisplay();
+        //        //frmMain.Instance.UpdateDisplay();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -193,6 +193,20 @@ namespace BookStore3
         private void frmArtist_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lstBooks_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                frmBook.DispatchBookFrom(lstBooks.SelectedValue as clsAllBooks);
+                UpdateDisplay();
+                //frmMain.Instance.UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

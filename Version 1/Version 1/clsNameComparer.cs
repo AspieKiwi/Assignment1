@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using System.Collections;
 
-namespace BookStore
+namespace BookStore3
 {
     sealed class clsNameComparer : IComparer<clsBook>
     {

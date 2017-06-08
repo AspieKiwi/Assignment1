@@ -30,5 +30,10 @@ namespace BookStore3
         public float? BookDewey { get; set; }
         public string BookLetterCode { get; set; }
         public string AuthorName { get; set; }
+
+        public override string ToString()
+        {
+            return BookTitle + "\t" + DateLastModifed.ToShortDateString();
+        }
     }
 }

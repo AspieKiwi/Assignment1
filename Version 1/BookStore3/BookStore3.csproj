@@ -57,6 +57,18 @@
     <Compile Include="frmAuthor.Designer.cs">
       <DependentUpon>frmAuthor.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBook.Designer.cs">
+      <DependentUpon>frmBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiction.Designer.cs">
+      <DependentUpon>frmFiction.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +86,12 @@
     <Compile Include="ServiceClient.cs" />
     <EmbeddedResource Include="frmAuthor.resx">
       <DependentUpon>frmAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBook.resx">
+      <DependentUpon>frmBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiction.resx">
+      <DependentUpon>frmFiction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

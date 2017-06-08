@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookStore
+namespace BookStore3
 {
     [Serializable()]
     public class clsFiction : clsBook

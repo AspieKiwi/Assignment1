@@ -10,13 +10,13 @@ namespace BookStore3
 {
     public partial class frmFiction : BookStore3.frmBook
     {
-        public static readonly frmFiction Instance = new frmFiction();
+        private static readonly frmFiction Instance = new frmFiction();
         public frmFiction()
         {
             InitializeComponent();
         }
 
-        public static void Run(clsFiction prFiction)
+        public static void Run(clsAllBooks prFiction)
         {
             Instance.SetDetails(prFiction);
         }
@@ -24,15 +24,13 @@ namespace BookStore3
         protected override void updateForm()
         {
             base.updateForm();
-            clsFiction lcBook = (clsFiction)this._Book;
-            txtLetterCode.Text = lcBook.LetterCode;
+            txtLetterCode.Text = _Book.BookLetterCode;
         }
 
         protected override void pushData()
         {
             base.pushData();
-            clsFiction lcBook = (clsFiction)_Book;
-            lcBook.LetterCode = txtLetterCode.Text;
+            _Book.BookLetterCode = txtLetterCode.Text;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BookStore3
 {
-    partial class frmNonFiction
+    partial class frmFiction
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDewey = new System.Windows.Forms.TextBox();
+            this.txtLetterCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtDewey
+            // txtLetterCode
             // 
-            this.txtDewey.Location = new System.Drawing.Point(92, 252);
-            this.txtDewey.Name = "txtDewey";
-            this.txtDewey.Size = new System.Drawing.Size(100, 22);
-            this.txtDewey.TabIndex = 14;
+            this.txtLetterCode.Location = new System.Drawing.Point(92, 251);
+            this.txtLetterCode.Name = "txtLetterCode";
+            this.txtLetterCode.Size = new System.Drawing.Size(100, 22);
+            this.txtLetterCode.TabIndex = 16;
             // 
-            // frmNonFiction
+            // frmFiction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(446, 361);
-            this.Controls.Add(this.txtDewey);
-            this.Name = "frmNonFiction";
-            this.Controls.SetChildIndex(this.txtDewey, 0);
+            this.Controls.Add(this.txtLetterCode);
+            this.Name = "frmFiction";
+            this.Controls.SetChildIndex(this.txtLetterCode, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtDewey;
+        private System.Windows.Forms.TextBox txtLetterCode;
     }
 }
