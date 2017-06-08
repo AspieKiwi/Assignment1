@@ -47,10 +47,39 @@ namespace BookStore3SelfHost
                     return new clsAuthor()
                     {
                         Name = (string)lcResult.Rows[0]["AuthorName"],
-                        Country = (string)lcResult.Rows[0]["AuthorCountry"]
+                        Country = (string)lcResult.Rows[0]["AuthorCountry"],
+                        BooksList = getAuthorsBooks(Name)
                     };
             else
             return null;
                 }
+
+        private List<clsAllBooks> getAuthorsBooks(string Name)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(1);
+            par.Add("Name", Name);
+            DataTable lcResult = clsDbConnection.GetDataTable("SELECT * FROM Book WHERE AuthorName = @Name", par);
+            List<clsAllBooks> lcBooks = new List<clsAllBooks>();
+            foreach (DataRow dr in lcResult.Rows)
+                lcBooks.Add(dataRow2AllBook(dr));
+            return lcBooks;
         }
+
+        private clsAllBooks dataRow2AllBook(DataRow dr)
+        {
+            return new clsAllBooks()
+            {
+                ISBN = Convert.ToInt64(dr["ISBN"]),
+                BookTitle = Convert.ToString(dr["BookTitle"]),
+                BookType = Convert.ToChar(dr["BookType"]),
+                PricePerItem = Convert.ToDecimal(dr["PricePerItem"]),
+                DateLastModifed = Convert.ToDateTime(dr["DateLastModified"]),
+                StockQuantity = Convert.ToInt32(dr["StockQuantity"]),
+                BookDewey = dr["BookDewey"] is DBNull ? (float?)null : Convert.ToInt32(dr["BookDewey"]),
+                BookLetterCode = dr["BookLetterCode"] is DBNull ? (string)null : Convert.ToString(dr["BookLetterCode"]),
+                AuthorName = Convert.ToString(dr["AuthorName"])
+
+            };
+        }
+    }
     }

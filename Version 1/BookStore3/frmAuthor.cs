@@ -62,6 +62,9 @@ namespace BookStore3
 
         private void UpdateDisplay()
         {
+            lstBooks.DataSource = null;
+            if (_Author.BooksList != null)
+                lstBooks.DataSource = _Author.BooksList;
             //if (_WorksList.SortOrder == 0)
             // {
             //     _WorksList.SortByName();
