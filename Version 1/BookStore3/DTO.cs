@@ -25,7 +25,7 @@ namespace BookStore3
         public string BookTitle { get; set; }
         public char BookType { get; set; }
         public decimal PricePerItem { get; set; }
-        public DateTime DateLastModifed { get; set; }
+        public DateTime DateLastModified { get; set; }
         public int StockQuantity { get; set; }
         public float? BookDewey { get; set; }
         public string BookLetterCode { get; set; }
@@ -33,7 +33,20 @@ namespace BookStore3
 
         public override string ToString()
         {
-            return BookTitle + "\t" + DateLastModifed.ToShortDateString();
+            return BookTitle + "\t" + DateLastModified.ToShortDateString();
+        }
+
+        public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for Non-Fiction";
+
+        public static clsAllBooks NewBook(char prChoice)
+        {
+            return new clsAllBooks() { BookType = Char.ToUpper(prChoice) };
+            //switch (char.ToUpper(prChoice))
+            //{
+            //    case 'F': return new clsAllBooks { BookType = 'F' };
+            //    case 'N': return new clsAllBooks { BookType = 'N' };
+            //    default: return null;
+            //}
         }
     }
 }

@@ -73,13 +73,94 @@ namespace BookStore3SelfHost
                 BookTitle = Convert.ToString(dr["BookTitle"]),
                 BookType = Convert.ToChar(dr["BookType"]),
                 PricePerItem = Convert.ToDecimal(dr["PricePerItem"]),
-                DateLastModifed = Convert.ToDateTime(dr["DateLastModified"]),
+                DateLastModified = Convert.ToDateTime(dr["DateLastModified"]),
                 StockQuantity = Convert.ToInt32(dr["StockQuantity"]),
                 BookDewey = dr["BookDewey"] is DBNull ? (float?)null : Convert.ToInt32(dr["BookDewey"]),
                 BookLetterCode = dr["BookLetterCode"] is DBNull ? (string)null : Convert.ToString(dr["BookLetterCode"]),
                 AuthorName = Convert.ToString(dr["AuthorName"])
 
             };
+
+
+        }
+
+        private Dictionary<string, object> prepareBookParameters(clsAllBooks prBook)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(10);
+            par.Add("BookType", prBook.BookType);
+            par.Add("ISBN", prBook.ISBN);
+            par.Add("BookTitle", prBook.BookTitle);
+            par.Add("PricePerItem", prBook.PricePerItem);
+            par.Add("StockQuantity", prBook.StockQuantity);
+            par.Add("BookDewey", prBook.BookDewey);
+            par.Add("BookLetterCode", prBook.BookLetterCode);
+            par.Add("DateLastModified", prBook.DateLastModified);
+            par.Add("AuthorName", prBook.AuthorName);
+            return par;
+
+        }
+
+        private Dictionary<string, object> prepareBookDeletionParameters(string prBookName, string prAuthorName)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(2);
+            par.Add("Title", prBookName);
+            par.Add("AuthorName", prAuthorName);
+            return par;
+        }
+
+        public string DeleteBook(string BookName, string AuthorName)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute(
+                    "DELETE FROM Book WHERE BookTitle = @Name AND AuthorName = @AuthorName", prepareBookDeletionParameters(BookName, AuthorName));
+                if (lcRecCount == 1)
+                    return "One Book Deleted";
+                else
+                    return "Unexpected book deletion count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        public string PostBook(clsAllBooks prBook)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("INSERT INTO Book " +
+                    "(BookType, ISBN, BookTitle, PricePerItem, DateLastModified, StockQuantity, BookDewey, BookLetterCode, AuthorName) " +
+                    "VALUES (@BookType, @ISBN, @BookTitle, @PricePerItem, @DateLastModified, @StockQuantity, @BookDewey, @BookLetterCode, @AuthorName)",
+                    prepareBookParameters(prBook));
+                if (lcRecCount == 1)
+                    return "One Book Inserted";
+                else
+                    return "Unexpected author insert count: " + lcRecCount;
+
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+
+        }
+
+        public string PutBook(clsAllBooks prBook)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("UPDATE Book SET BookType = @BookType, ISBN = @ISBN, BookTitle = @Title, PricePerItem = @PricePerItem, DateLastModified = @DateLastModified, StockQuantity = @StockQuantity, BookDewey = @BookDewey, BookLetterCode = @BookLetterCode, AuthorName = @AuthorName WHERE BookTitle = @Title",
+                    prepareBookParameters(prBook));
+                if (lcRecCount == 1)
+                    return "One Book Updated";
+                else
+                    return "Unexpected book update count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
         }
     }
-    }
+}

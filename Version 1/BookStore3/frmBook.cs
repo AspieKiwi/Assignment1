@@ -79,7 +79,7 @@ namespace BookStore3
             txtTitle.Text = _Book.BookTitle;
             txtType.Text = _Book.BookType.ToString();
             txtPricePerItem.Text = _Book.PricePerItem.ToString();
-            txtDate.Text = _Book.DateLastModifed.ToString();
+            txtDate.Text = _Book.DateLastModified.ToString();
             txtQuantity.Text = _Book.StockQuantity.ToString();
             txtTitle.Enabled = string.IsNullOrEmpty(_Book.BookTitle);
         }
@@ -90,7 +90,7 @@ namespace BookStore3
             _Book.BookTitle = txtTitle.Text;
             _Book.BookType = char.Parse(txtType.Text);
             _Book.PricePerItem = decimal.Parse(txtPricePerItem.Text);
-            _Book.DateLastModifed = DateTime.Parse(txtDate.Text);
+            _Book.DateLastModified = DateTime.Parse(txtDate.Text);
             _Book.StockQuantity = int.Parse(txtQuantity.Text);
         }
     }

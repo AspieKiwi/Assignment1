@@ -103,13 +103,11 @@ namespace BookStore3
             Show();
         }
 
-        //private void pushData()
-        //{
-        //    _Artist.Name = txtName.Text;
-        //    _Artist.Speciality = txtSpeciality.Text;
-        //    _Artist.Phone = txtPhone.Text;
-        //    //_WorksList.SortOrder = _SortOrder; // no longer required, updated with each rbByDate_CheckedChanged
-        //}
+        private void pushData()
+        {
+            _Author.Name = txtName.Text;
+            _Author.Country = txtCountry.Text;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -202,6 +200,38 @@ namespace BookStore3
                 frmBook.DispatchBookFrom(lstBooks.SelectedValue as clsAllBooks);
                 UpdateDisplay();
                 //frmMain.Instance.UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void bttnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string lcReply = new InputBox(clsAllBooks.FACTORY_PROMPT).Answer;
+                if (!string.IsNullOrEmpty(lcReply))
+                {
+                    clsAllBooks lcBook = clsAllBooks.NewBook(lcReply[0]);
+                    if(lcBook != null)
+                    {
+                        if (txtName.Enabled)
+                        {
+                            pushData();
+                            await ServiceClient.InsertAuthorAsync(_Author);
+                            txtName.Enabled = false;
+                        }
+                        lcBook.AuthorName = _Author.Name;
+                        frmBook.DispatchBookFrom(lcBook);
+                        if (!string.IsNullOrEmpty(lcBook.BookTitle))
+                        {
+                            refreshFormFromDB(_Author.Name);
+                            frmMain.Instance.updateDisplay();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

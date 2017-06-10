@@ -54,5 +54,10 @@ namespace BookStore3
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
         }
+
+        internal async static Task<string> InsertAuthorAsync(clsAuthor prAuthor)
+        {
+            return await InsertOrUpdateAsync(prAuthor, "http://localhost:60064/api/book/PutAuthor", "PUT");
+        }
     }
 }

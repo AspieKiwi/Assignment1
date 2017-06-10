@@ -20,7 +20,7 @@ namespace BookStore3SelfHost
         public string BookTitle { get; set; }
         public char BookType { get; set; }
         public decimal PricePerItem { get; set; }
-        public DateTime DateLastModifed { get; set; }
+        public DateTime DateLastModified { get; set; }
         public int StockQuantity { get; set; }
         public float? BookDewey { get; set; }
         public string BookLetterCode { get; set; }
