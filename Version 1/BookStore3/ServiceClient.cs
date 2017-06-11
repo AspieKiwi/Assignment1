@@ -59,5 +59,15 @@ namespace BookStore3
         {
             return await InsertOrUpdateAsync(prAuthor, "http://localhost:60064/api/book/PutAuthor", "PUT");
         }
+
+        internal async static Task<string> DeleteBookAsync(clsAllBooks prBook)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+            {
+                HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
+                    ($"http://localhost:60064/api/book/DeleteBook?BookTitle={prBook.BookTitle}&AuthorName={prBook.AuthorName}");
+                return await lcRespMessage.Content.ReadAsStringAsync();
+            }
+        }
     }
 }

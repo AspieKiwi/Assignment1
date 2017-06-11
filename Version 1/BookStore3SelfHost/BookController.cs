@@ -103,17 +103,17 @@ namespace BookStore3SelfHost
         private Dictionary<string, object> prepareBookDeletionParameters(string prBookName, string prAuthorName)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(2);
-            par.Add("Title", prBookName);
+            par.Add("BookTitle", prBookName);
             par.Add("AuthorName", prAuthorName);
             return par;
         }
 
-        public string DeleteBook(string BookName, string AuthorName)
+        public string DeleteBook(string BookTitle, string AuthorName)
         {
             try
             {
                 int lcRecCount = clsDbConnection.Execute(
-                    "DELETE FROM Book WHERE BookTitle = @Name AND AuthorName = @AuthorName", prepareBookDeletionParameters(BookName, AuthorName));
+                    "DELETE FROM Book WHERE BookTitle = @BookTitle AND AuthorName = @AuthorName", prepareBookDeletionParameters(BookTitle, AuthorName));
                 if (lcRecCount == 1)
                     return "One Book Deleted";
                 else
@@ -150,7 +150,7 @@ namespace BookStore3SelfHost
         {
             try
             {
-                int lcRecCount = clsDbConnection.Execute("UPDATE Book SET BookType = @BookType, ISBN = @ISBN, BookTitle = @Title, PricePerItem = @PricePerItem, DateLastModified = @DateLastModified, StockQuantity = @StockQuantity, BookDewey = @BookDewey, BookLetterCode = @BookLetterCode, AuthorName = @AuthorName WHERE BookTitle = @Title",
+                int lcRecCount = clsDbConnection.Execute("UPDATE Book SET BookType = @BookType, ISBN = @ISBN, BookTitle = @BookTitle, PricePerItem = @PricePerItem, DateLastModified = @DateLastModified, StockQuantity = @StockQuantity, BookDewey = @BookDewey, BookLetterCode = @BookLetterCode, AuthorName = @AuthorName WHERE BookTitle = @BookTitle",
                     prepareBookParameters(prBook));
                 if (lcRecCount == 1)
                     return "One Book Updated";

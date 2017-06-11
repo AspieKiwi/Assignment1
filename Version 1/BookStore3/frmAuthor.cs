@@ -54,10 +54,10 @@ namespace BookStore3
 
 
 
-        private void updateTitle(string prGalleryName)
+        private void updateTitle(string prBookName)
         {
-            if (!string.IsNullOrEmpty(prGalleryName))
-                Text = "Artist Details - " + prGalleryName;
+            if (!string.IsNullOrEmpty(prBookName))
+                Text = "Author Details - " + prBookName;
         }
 
         private void UpdateDisplay()
@@ -134,15 +134,15 @@ namespace BookStore3
         //    }
         //}
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
-            //int lcIndex = lstWorks.SelectedIndex;
+            int lcIndex = lstBooks.SelectedIndex;
 
-            //if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //_WorksList.RemoveAt(lcIndex);
-                UpdateDisplay();
-              //  frmMain.Instance.UpdateDisplay();
+                MessageBox.Show(await ServiceClient.DeleteBookAsync(lstBooks.SelectedItem as clsAllBooks));
+                refreshFormFromDB(_Author.Name);
+                frmMain.Instance.updateDisplay();
             }
         }
 
