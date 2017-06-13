@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookStore3
+namespace BookUniversal
 {
     public partial class frmBook : Form
     {

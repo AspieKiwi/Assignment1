@@ -1,4 +1,4 @@
-﻿namespace BookStore3
+﻿namespace BookUniversal
 {
     partial class frmFiction
     {

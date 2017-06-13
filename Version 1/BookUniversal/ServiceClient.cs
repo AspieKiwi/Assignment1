@@ -47,7 +47,7 @@ namespace BookUniversal
         {
             using (HttpRequestMessage lcReqMessage = new HttpRequestMessage(new HttpMethod(prRequest), prUrl))
             using (lcReqMessage.Content =
-                new StringContent(JsonConvert.SerializeObject(prItem), Encoding.Default, "application/json"))
+                new StringContent(JsonConvert.SerializeObject(prItem), Encoding.UTF8, "application/json"))
             using (HttpClient lcHttpClient = new HttpClient())
             {
                 HttpResponseMessage lcRespMessage = await lcHttpClient.SendAsync(lcReqMessage);

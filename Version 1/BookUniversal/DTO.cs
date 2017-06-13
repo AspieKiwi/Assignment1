@@ -33,7 +33,7 @@ namespace BookUniversal
 
         public override string ToString()
         {
-            return BookTitle + "\t" + DateLastModified.ToShortDateString();
+            return BookTitle + "\t" + DateLastModified.ToString("d");
         }
 
         public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for Non-Fiction";

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace BookStore3
+namespace BookUniversal
 {
     public partial class frmAuthor : Form
     {
