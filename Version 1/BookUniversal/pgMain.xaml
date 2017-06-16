@@ -11,7 +11,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Book Store" VerticalAlignment="Top" FontSize="22"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,39,0,0" TextWrapping="Wrap" Text="Authors" VerticalAlignment="Top" FontSize="36"/>
         <ListBox x:Name="lstAuthors" HorizontalAlignment="Left" Height="416" Margin="16,92,0,0" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="button" Content="Close" HorizontalAlignment="Left" Margin="261,523,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="261,523,0,0" VerticalAlignment="Top" Click="btnView_Click"/>
 
     </Grid>
 </Page>

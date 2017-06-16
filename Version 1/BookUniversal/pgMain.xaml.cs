@@ -31,5 +31,16 @@ namespace BookUniversal
         {
             lstAuthors.ItemsSource = await ServiceClient.GetAuthorNamesAsync();
         }
+
+        private void viewAuthor()
+        {
+            if (lstAuthors.SelectedItem != null)
+                Frame.Navigate(typeof(pgAuthor), lstAuthors.SelectedIndex);
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+           Frame.Navigate(typeof(pgAuthor), (string)lstAuthors.SelectedValue);
+        }
     }
 }
