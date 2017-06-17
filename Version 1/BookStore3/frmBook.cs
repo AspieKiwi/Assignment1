@@ -19,7 +19,8 @@ namespace BookUniversal
         {
             Dictionary<char, Delegate> BooksForm = new Dictionary<char, Delegate>
             {
-                {'F', new LoadBookFormDelegate(frmFiction.Run) }
+                {'F', new LoadBookFormDelegate(frmFiction.Run) },
+                {'N', new LoadBookFormDelegate(frmNonFiction.Run) }
             };
             BooksForm[prBook.BookType].DynamicInvoke(prBook);
         }
@@ -44,7 +45,7 @@ namespace BookUniversal
             //prPageNumbers = Convert.ToDecimal(txtPageNumbers.Text);
         }
 
-        private async void btnOK_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (isValid())
             {
@@ -54,15 +55,15 @@ namespace BookUniversal
                 else
                     MessageBox.Show(await ServiceClient.UpdateBookAsync(_Book));
                 Close();
-            //}
-            //if (isValid() == true)
-            //{
-            //    DialogResult = DialogResult.OK;
-            //    Close();
+                //}
+                //if (isValid() == true)
+                //{
+                //    DialogResult = DialogResult.OK;
+                //    Close();
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             //DialogResult = DialogResult.Cancel;
             Close();
@@ -78,7 +79,7 @@ namespace BookUniversal
             txtISBN.Text = _Book.ISBN.ToString();
             txtTitle.Text = _Book.BookTitle;
             txtType.Text = _Book.BookType.ToString();
-            txtPricePerItem.Text = _Book.PricePerItem.ToString();
+            txtPrice.Text = _Book.PricePerItem.ToString();
             txtDate.Text = _Book.DateLastModified.ToString();
             txtQuantity.Text = _Book.StockQuantity.ToString();
             txtTitle.Enabled = string.IsNullOrEmpty(_Book.BookTitle);
@@ -89,10 +90,9 @@ namespace BookUniversal
             _Book.ISBN = long.Parse(txtISBN.Text);
             _Book.BookTitle = txtTitle.Text;
             _Book.BookType = char.Parse(txtType.Text);
-            _Book.PricePerItem = decimal.Parse(txtPricePerItem.Text);
+            _Book.PricePerItem = decimal.Parse(txtPrice.Text);
             _Book.DateLastModified = DateTime.Parse(txtDate.Text);
             _Book.StockQuantity = int.Parse(txtQuantity.Text);
         }
     }
-
 }

@@ -1,6 +1,6 @@
 ﻿namespace BookUniversal
 {
-    partial class frmFiction
+    partial class frmNonFiction
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtLetterCode = new System.Windows.Forms.TextBox();
+            this.txtDewey = new System.Windows.Forms.TextBox();
+            this.lblDewey = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // txtDewey
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 310);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Letter Code";
+            this.txtDewey.Location = new System.Drawing.Point(167, 303);
+            this.txtDewey.Name = "txtDewey";
+            this.txtDewey.Size = new System.Drawing.Size(334, 22);
+            this.txtDewey.TabIndex = 14;
             // 
-            // txtLetterCode
+            // lblDewey
             // 
-            this.txtLetterCode.Location = new System.Drawing.Point(167, 305);
-            this.txtLetterCode.Name = "txtLetterCode";
-            this.txtLetterCode.Size = new System.Drawing.Size(334, 22);
-            this.txtLetterCode.TabIndex = 15;
+            this.lblDewey.AutoSize = true;
+            this.lblDewey.Location = new System.Drawing.Point(35, 306);
+            this.lblDewey.Name = "lblDewey";
+            this.lblDewey.Size = new System.Drawing.Size(104, 17);
+            this.lblDewey.TabIndex = 15;
+            this.lblDewey.Text = "Dewey Decimal";
             // 
-            // frmFiction
+            // frmNonFiction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(513, 411);
-            this.Controls.Add(this.txtLetterCode);
-            this.Controls.Add(this.label1);
-            this.Name = "frmFiction";
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.txtLetterCode, 0);
+            this.Controls.Add(this.lblDewey);
+            this.Controls.Add(this.txtDewey);
+            this.Name = "frmNonFiction";
+            this.Controls.SetChildIndex(this.txtDewey, 0);
+            this.Controls.SetChildIndex(this.lblDewey, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -64,7 +64,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLetterCode;
+        private System.Windows.Forms.TextBox txtDewey;
+        private System.Windows.Forms.Label lblDewey;
     }
 }
