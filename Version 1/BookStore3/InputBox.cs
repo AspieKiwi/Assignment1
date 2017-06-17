@@ -36,15 +36,15 @@ namespace BookUniversal
             //    lblError.Text = "Please enter one character into the text box.";
             //}
         }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
         public string Answer
         {
             get { return _Answer; } 
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }
