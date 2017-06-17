@@ -107,5 +107,12 @@ namespace BookUniversal
         //        return await lcRespMessage.Content.ReadAsStringAsync();
         //    }
         //}
+
+        internal async static Task<long> GetBookISBNAsync(long prISBN)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<long>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/book/GetBookISBN?ISBN=" + prISBN));
+        }
     }
 }

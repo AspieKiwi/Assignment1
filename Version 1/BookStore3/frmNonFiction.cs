@@ -27,5 +27,18 @@ namespace BookUniversal
             txtDewey.Text = _Book.BookDewey.ToString();
 
         }
+
+        //protected override bool IsValid()
+        //{
+        //    bool lcValid = true;
+        //    if (!base.isValid())
+        //        lcValid = false;
+        //    if (!clsBookStoreUtility.CheckFloatValue(txtDewey.Text))
+        //    {
+        //        _ValidationErrors.Add("Dewey can only take numbers");
+        //        lcValid = false;
+        //    }
+        //    return lcValid;
+        //}
     }
 }

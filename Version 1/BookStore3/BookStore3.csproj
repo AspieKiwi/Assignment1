@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsBookStoreUtility.cs" />
     <Compile Include="DTO.cs" />
     <Compile Include="frmAuthor.cs">
       <SubType>Form</SubType>
