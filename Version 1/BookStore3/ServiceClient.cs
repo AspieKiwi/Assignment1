@@ -69,5 +69,43 @@ namespace BookUniversal
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
         }
+
+        // ******************* for order *****************
+
+        //internal async static Task<List<clsOrder>> GetOrderListAsync()
+        //{
+        //    using (HttpClient lcHttpClient = new HttpClient())
+        //        return JsonConvert.DeserializeObject<List<clsOrder>>
+        //            (await lcHttpClient.GetStringAsync
+        //            ("http://localhost:60064/api/book/GetOrderList/"));
+        //}
+
+        //internal async static Task<clsOrder> GetOrderAsync(int prOrderID)
+        //{
+        //    using (HttpClient lcHttpClient = new HttpClient())
+        //        return JsonConvert.DeserializeObject<clsOrder>
+        //            (await lcHttpClient.GetStringAsync
+        //            ("http://localhost:60064/api/book/GetOrder?orderId=" + prOrderID));
+        //}
+
+        //internal static async Task<string> InsertOrderAsync(clsOrder prOrder)
+        //{
+        //    return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostBook", "POST");
+        //}
+
+        //internal static async Task<string> UpdateOrderAsync(clsOrder prOrder)
+        //{
+        //    return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PutBook", "PUT");
+        //}
+
+        //internal static async Task<string> DeleteOrderAsync(int prOrderID)
+        //{
+        //    using (HttpClient lcHttpClient = new HttpClient())
+        //    {
+        //        HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
+        //            ($"http://localhost:60064/api/book/DeleteOrder?orderId=" + prOrderID);
+        //        return await lcRespMessage.Content.ReadAsStringAsync();
+        //    }
+        //}
     }
 }
