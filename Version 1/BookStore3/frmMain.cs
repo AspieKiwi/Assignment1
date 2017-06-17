@@ -57,6 +57,7 @@ namespace BookUniversal
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
+            Close();
             //try
             //{
             //    //_AuthorList.Save();

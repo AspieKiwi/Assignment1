@@ -42,7 +42,14 @@ namespace BookUniversal
 
         private async void refreshFormFromDB(string prAuthorName)
         {
-            SetDetails(await ServiceClient.GetAuthorAsync(prAuthorName));
+            try
+            {
+                SetDetails(await ServiceClient.GetAuthorAsync(prAuthorName));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
         }
 
         //async private void refreshFormFromDB(string prArtistName)
@@ -63,8 +70,7 @@ namespace BookUniversal
         private void UpdateDisplay()
         {
             lstBooks.DataSource = null;
-            if (_Author.BooksList != null)
-                lstBooks.DataSource = _Author.BooksList;
+            lstBooks.DataSource = _Author.BooksList;
             //if (_WorksList.SortOrder == 0)
             // {
             //     _WorksList.SortByName();
@@ -236,6 +242,32 @@ namespace BookUniversal
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UpdateAuthorBooks()
+        {
+            try
+            {
+                frmBook.DispatchBookFrom(lstBooks.SelectedValue as clsAllBooks);
+                UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain.Instance.updateDisplay();
+                Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
         }
     }
