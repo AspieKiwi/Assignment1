@@ -40,8 +40,15 @@ namespace BookUniversal
 
         public async void updateDisplay()
         {
-            lstAuthors.DataSource = null;
-            lstAuthors.DataSource = await ServiceClient.GetAuthorNamesAsync();
+            try
+            {
+                lstAuthors.DataSource = null;
+                lstAuthors.DataSource = await ServiceClient.GetAuthorNamesAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
             //string[] lcDisplayList = new string[_AuthorList.Count];
            // _AuthorList.Keys.CopyTo(lcDisplayList, 0);
             //lstAuthors.DataSource = lcDisplayList;
