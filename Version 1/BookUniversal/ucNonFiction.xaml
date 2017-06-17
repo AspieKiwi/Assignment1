@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="BookUniversal.ucFiction"
+    x:Class="BookUniversal.ucNonFiction"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BookUniversal"
@@ -10,8 +10,8 @@
     d:DesignWidth="400">
 
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,124,0,0" TextWrapping="Wrap" Text="LetterCode: " VerticalAlignment="Top"/>
-        <TextBox x:Name="txtLetterCode" HorizontalAlignment="Left" Margin="192,112,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="60,120,0,0" TextWrapping="Wrap" Text="Dewey: " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDewey" HorizontalAlignment="Left" Margin="140,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="130"/>
 
     </Grid>
 </UserControl>

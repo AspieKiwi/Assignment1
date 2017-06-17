@@ -17,16 +17,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BookUniversal
 {
-    public sealed partial class ucFiction : UserControl, IBookControl
+    public sealed partial class ucNonFiction : UserControl
     {
-        public ucFiction()
+        public ucNonFiction()
         {
             this.InitializeComponent();
         }
 
         public void UpdateControl(clsAllBooks prBook)
         {
-            txtLetterCode.Text = prBook.BookLetterCode;
+            txtDewey.Text = prBook.BookDewey.ToString();
         }
     }
 }

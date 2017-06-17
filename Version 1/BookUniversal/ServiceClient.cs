@@ -57,7 +57,7 @@ namespace BookUniversal
 
         internal async static Task<string> InsertAuthorAsync(clsAuthor prAuthor)
         {
-            return await InsertOrUpdateAsync(prAuthor, "http://localhost:60064/api/book/PutAuthor", "PUT");
+            return await InsertOrUpdateAsync(prAuthor, "http://localhost:60064/api/book/PutAuthor", "POST");
         }
 
         internal async static Task<string> DeleteBookAsync(clsAllBooks prBook)
@@ -69,5 +69,12 @@ namespace BookUniversal
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
         }
+
+        internal static async Task<string> InsertOrderAsync(clsOrder prOrder)
+        {
+            return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostOrder", "POST");
+        }
+
+
     }
 }

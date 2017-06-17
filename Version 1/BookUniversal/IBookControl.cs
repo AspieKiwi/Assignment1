@@ -8,7 +8,6 @@ namespace BookUniversal
 {
     interface IBookControl
     {
-        void PushData(clsAllBooks prBook);
         void UpdateControl(clsAllBooks prBook);
     }
 }

@@ -26,4 +26,16 @@ namespace BookStore3SelfHost
         public string BookLetterCode { get; set; }
         public string AuthorName { get; set; }
     }
+
+    public class clsOrder
+    {
+        public int OrderID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public decimal TotalOrderCost { get; set; }
+        public float OrderQuantity { get; set; }
+        public DateTime OrderDate { get; set; }
+        public long BookISBN { get; set; }
+
+    }
 }

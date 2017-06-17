@@ -12,8 +12,8 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="Author Details" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" Text="Country:" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstBoxBooks" HorizontalAlignment="Left" Height="365" Margin="6,146,0,0" VerticalAlignment="Top" Width="228" RequestedTheme="Light" />
-        <Button x:Name="btnOrder" Content="Order" HorizontalAlignment="Left" Margin="239,479,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lstBoxBooks" HorizontalAlignment="Left" Height="365" Margin="6,146,0,0" VerticalAlignment="Top" Width="228" RequestedTheme="Light" SelectionChanged="lstBoxBooks_SelectionChanged" />
+        <Button x:Name="btnOrder" Content="Order" HorizontalAlignment="Left" Margin="239,479,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
         <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="21,521,0,0" VerticalAlignment="Top" Width="329">
             <TextBlock x:Name="txbMessage" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Messages" VerticalAlignment="Top" Width="329"/>
         </ScrollViewer>

@@ -23,7 +23,7 @@ namespace BookUniversal
     {
         public long ISBN { get; set; }
         public string BookTitle { get; set; }
-        public char BookType { get; set; }
+        public string BookType { get; set; }
         public decimal PricePerItem { get; set; }
         public DateTime DateLastModified { get; set; }
         public int StockQuantity { get; set; }
@@ -33,20 +33,29 @@ namespace BookUniversal
 
         public override string ToString()
         {
-            return BookTitle + "\t" + DateLastModified.ToString("d");
+            return BookType;// + "\t" + DateLastModified.ToString("d");
         }
 
         public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for Non-Fiction";
 
-        public static clsAllBooks NewBook(char prChoice)
-        {
-            return new clsAllBooks() { BookType = Char.ToUpper(prChoice) };
-            //switch (char.ToUpper(prChoice))
-            //{
-            //    case 'F': return new clsAllBooks { BookType = 'F' };
-            //    case 'N': return new clsAllBooks { BookType = 'N' };
-            //    default: return null;
-            //}
-        }
+        //public static clsAllBooks NewBook(char prChoice)
+        //{
+        //    //return new clsAllBooks() { BookType = Char.ToUpper(prChoice) };
+        //}
+
+
     }
+
+    public class clsOrder
+    {
+        public int OrderID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public decimal TotalOrderCost { get; set; }
+        public float OrderQuantity { get; set; }
+        public DateTime OrderDate { get; set; }
+        public long BookISBN { get; set; }
+
+    }
+
 }

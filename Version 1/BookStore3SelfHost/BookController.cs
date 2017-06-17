@@ -162,5 +162,46 @@ namespace BookStore3SelfHost
                 return ex.GetBaseException().Message;
             }
         }
+
+        //public List<clsOrder> GetOrderList()
+        //{
+        //    DataTable lcResult = clsDbConnection.GetDataTable("SELECT Book.BookTitle, Order.* FROM Book JOIN Order " + "ON Book.ISBN = Order.BookISBN", null);
+        //    List<clsOrder> lcOrder = new List<clsOrder>();
+        //    foreach (DataRow dr in lcResult.Rows)
+        //        lcOrder.Add(dataRowOrder(dr));
+        //    return lcOrder;
+        //}
+
+        public string PostOrder(clsOrder prOrder)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("INSERT INTO [Order]" 
+                    + "(CustomerName, CustomerEmail, TotalOrderCost, OrderQuantity, OrderDate, BookISBN)" +
+                    "VALUES (@CustomerName, @CustomerEmail, @TotalOrderCost, @OrderQuantity, @OrderDate, @BookISBN)",
+                    prepareOrderParameters(prOrder));
+                if (lcRecCount == 1)
+                    return "Order Complete";
+                else
+                    return "Unexpected order post count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        private Dictionary<string, object> prepareOrderParameters(clsOrder prOrder)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(11);
+            par.Add("OrderID", prOrder.OrderID);
+            par.Add("CustomerName", prOrder.CustomerName);
+            par.Add("CustomerEmail", prOrder.CustomerEmail);
+            par.Add("TotalOrderCost", prOrder.TotalOrderCost);
+            par.Add("OrderQuantity", prOrder.OrderQuantity);
+            par.Add("OrderDate", prOrder.OrderDate);
+            par.Add("BookISBN", prOrder.BookISBN);
+            return par;
+        }
     }
 }

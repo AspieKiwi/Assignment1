@@ -72,5 +72,14 @@ namespace BookUniversal
             lstBoxBooks.ItemsSource = _Author.BooksList.ToList();
         }
 
+        private void btnOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lstBoxBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Frame.Navigate(typeof(pgOrder), (clsAllBooks)lstBoxBooks.SelectedValue);
+        }
     }
 }
