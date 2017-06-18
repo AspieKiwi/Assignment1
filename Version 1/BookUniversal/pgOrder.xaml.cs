@@ -81,6 +81,7 @@ namespace BookStoreUniversal
             _Order.CustomerName = txtName.Text;
             _Order.CustomerEmail = txtEmail.Text;
             _Order.OrderQuantity = int.Parse(txtQuantity.Text);
+            _Order.BookISBN = _Book.ISBN;
             _Order.OrderDate = DateTime.Now;
         }
 

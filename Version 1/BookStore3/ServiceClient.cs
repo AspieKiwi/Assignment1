@@ -110,7 +110,7 @@ namespace BookStoreWindows
             using (HttpClient lcHttpClient = new HttpClient())
             {
                 HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
-                    ($"http://localhost:60064/api/BOok/DeleteOrder?BookISBN={prOrder.BookISBN}&CustomerName={prOrder.CustomerName}");
+                    ($"http://localhost:60064/api/Book/DeleteOrder?OrderID={prOrder.OrderID}");
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
         }

@@ -233,5 +233,30 @@ namespace BookStore3SelfHost
                 OrderDate = Convert.ToDateTime(prDataRow["OrderDate"])
             };
         }
+
+        public string DeleteOrder(Int64 OrderID)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute(
+                    "DELETE FROM [Order] WHERE OrderID = @OrderID",
+                    prepareBookDeletionParameters(OrderID));
+                if (lcRecCount == 1)
+                    return "One order deleted";
+                else
+                    return "unexpected order deletion count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        private Dictionary<string, object> prepareBookDeletionParameters(long prOrderID)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(2);
+            par.Add("OrderID", prOrderID);
+            return par;
+        }
     }
 }

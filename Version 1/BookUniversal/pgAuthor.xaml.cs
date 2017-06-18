@@ -13,13 +13,12 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace BookStoreUniversal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    //Author: Rebecca Stephens
+    // Date: 18/06/2017
+    // Notes: This page displays the details associated with a particular author.
     public sealed partial class pgAuthor : Page
     {
         public pgAuthor()
@@ -31,15 +30,23 @@ namespace BookStoreUniversal
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            if (e.Parameter != null)
+            try
             {
-                string lcAuthorName = e.Parameter.ToString();
-                _Author = await ServiceClient.GetAuthorAsync(lcAuthorName);
-                UpdateDisplay();
+                base.OnNavigatedTo(e);
+                if (e.Parameter != null)
+                {
+                    string lcAuthorName = e.Parameter.ToString();
+                    _Author = await ServiceClient.GetAuthorAsync(lcAuthorName);
+                    UpdateDisplay();
+                }
+                else
+                    _Author = new clsAuthor();
             }
-            else
-                _Author = new clsAuthor();
+            catch (Exception ex)
+            {
+
+                txbMessage.Text = ex.GetBaseException().Message;
+            }
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -81,5 +88,11 @@ namespace BookStoreUniversal
         {
             Frame.Navigate(typeof(pgOrder), (clsAllBooks)lstBoxBooks.SelectedValue);
         }
+
+        //private void editBook(clsAllBooks prBook)
+        //{
+        //    if (prBook != null)
+        //        Frame.Navigate(typeof(pgOrder), prBook);
+        //}
     }
 }

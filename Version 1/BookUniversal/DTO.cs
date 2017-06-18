@@ -52,7 +52,7 @@ namespace BookStoreUniversal
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
         public decimal TotalOrderCost { get; set; }
-        public float OrderQuantity { get; set; }
+        public int OrderQuantity { get; set; }
         public DateTime OrderDate { get; set; }
         public long BookISBN { get; set; }
 

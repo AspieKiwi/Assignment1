@@ -32,7 +32,7 @@ namespace BookStoreWindows
 
         public override string ToString()
         {
-            return OrderID + "\t";
+            return OrderID + "\t" + BookISBN;
         }
     }
 

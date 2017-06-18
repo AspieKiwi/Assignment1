@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace BookStoreUniversal
 {
+    // Author: Rebecca Stephens
+    // Date: 18/06/2017
+    // Notes: This ServiceClient helps the UWP retrieve and call to the queries in the  Book Controller.
     class ServiceClient
     {
         internal async static Task<List<string>> GetAuthorNamesAsync()
@@ -75,6 +78,23 @@ namespace BookStoreUniversal
             return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostOrder", "POST");
         }
 
+        internal async static Task<string> UpdateOrderBookAsync(clsAllBooks prBook)
+        {
+            return await InsertOrUpdateAsync(prBook, "http://localhost:60064/api/book/PutOrderBook", "PUT");
+        }
 
+        internal async static Task<clsOrder> GetOrdersAsync()
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<clsOrder>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/book/GetOrders/"));
+        }
+
+        internal async static Task<List<int>> GetBookQuantityAsync(Int64 prBookID)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<List<int>>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/book/GetBookQuantity?BookISBN=" + prBookID));
+        }
     }
 }

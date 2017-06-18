@@ -9,5 +9,7 @@ namespace BookStoreUniversal
     interface IBookControl
     {
         void UpdateControl(clsAllBooks prBook);
+
+        void PushData(clsAllBooks prBook);
     }
 }

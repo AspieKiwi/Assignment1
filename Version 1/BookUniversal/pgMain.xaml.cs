@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+
 
 namespace BookStoreUniversal
 {
@@ -29,7 +29,14 @@ namespace BookStoreUniversal
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            lstAuthors.ItemsSource = await ServiceClient.GetAuthorNamesAsync();
+            try
+            {
+                lstAuthors.ItemsSource = await ServiceClient.GetAuthorNamesAsync();
+            }
+            catch (Exception ex)
+            {
+                txbMessage.Text = ex.GetBaseException().Message;
+            }
         }
 
         private void viewAuthor()
