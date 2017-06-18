@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookUniversal
+namespace BookStoreWindows
 {
 
     public class clsAuthor
@@ -18,6 +18,24 @@ namespace BookUniversal
             return Name;
         }
     }
+
+    public class clsOrder
+    {
+        public int OrderID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public decimal TotalOrderCost { get; set; }
+        public float OrderQuantity { get; set; }
+        public DateTime OrderDate { get; set; }
+        public long BookISBN { get; set; }
+        public List<clsOrder> OrderList { get; set; }
+
+        public override string ToString()
+        {
+            return OrderID + "\t";
+        }
+    }
+
 
     public class clsAllBooks
     {
@@ -48,5 +66,6 @@ namespace BookUniversal
             //    default: return null;
             //}
         }
+
     }
 }

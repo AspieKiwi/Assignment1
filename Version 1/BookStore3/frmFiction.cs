@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BookUniversal
+namespace BookStoreWindows
 {
-    public partial class frmFiction : BookUniversal.frmBook
+    public partial class frmFiction : BookStoreWindows.frmBook
     {
         private static readonly frmFiction Instance = new frmFiction();
         public frmFiction()

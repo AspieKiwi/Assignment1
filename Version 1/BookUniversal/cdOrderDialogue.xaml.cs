@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Content Dialog item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace BookUniversal
+namespace BookStoreUniversal
 {
     public sealed partial class cdOrderDialogue : ContentDialog
     {

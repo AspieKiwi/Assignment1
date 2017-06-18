@@ -203,5 +203,35 @@ namespace BookStore3SelfHost
             par.Add("BookISBN", prOrder.BookISBN);
             return par;
         }
+
+        public clsOrder GetOrders()
+        {
+            return new clsOrder()
+            {
+                OrderList = GetOrderBooks(),
+            };
+        }
+
+        public List<clsOrder> GetOrderBooks()
+        {
+            DataTable lcResult = clsDbConnection.GetDataTable("SELECT * FROM [Order]", null);
+            List<clsOrder> lcOrder = new List<clsOrder>();
+            foreach (DataRow dr in lcResult.Rows)
+                lcOrder.Add(dataRow2AllOrders(dr));
+            return lcOrder;
+        }
+
+        private clsOrder dataRow2AllOrders(DataRow prDataRow)
+        {
+            return new clsOrder()
+            {
+                OrderID = Convert.ToInt16(prDataRow["OrderID"]),
+                BookISBN = Convert.ToInt64(prDataRow["BookISBN"]),
+                CustomerName = Convert.ToString(prDataRow["CustomerName"]),
+                CustomerEmail = Convert.ToString(prDataRow["CustomerEmail"]),
+                OrderQuantity = Convert.ToInt16(prDataRow["OrderQuantity"]),
+                OrderDate = Convert.ToDateTime(prDataRow["OrderDate"])
+            };
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BookUniversal
+﻿namespace BookStoreWindows
 {
     partial class frmNonFiction
     {

@@ -1,4 +1,4 @@
-﻿namespace BookUniversal
+﻿namespace BookStoreWindows
 {
     partial class frmMain
     {
@@ -31,6 +31,7 @@
             this.lstAuthors = new System.Windows.Forms.ListBox();
             this.lblValue = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstAuthors
@@ -62,11 +63,22 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
+            // btnOrder
+            // 
+            this.btnOrder.Location = new System.Drawing.Point(268, 257);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(75, 47);
+            this.btnOrder.TabIndex = 3;
+            this.btnOrder.Text = "View Orders";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 415);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.lstAuthors);
@@ -83,5 +95,6 @@
         private System.Windows.Forms.ListBox lstAuthors;
         private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnOrder;
     }
 }

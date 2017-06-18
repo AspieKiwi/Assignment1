@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BookUniversal.Properties
+namespace BookStoreWindows.Properties
 {
 
 

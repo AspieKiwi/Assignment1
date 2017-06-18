@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookUniversal
+namespace BookStoreWindows
 {
     public partial class frmMain : Form
     {
@@ -145,6 +145,13 @@ namespace BookUniversal
                     MessageBox.Show(ex.Message, "This should never occur");
                 }
             }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            frmCurrentOrders lcCurrentOrder;
+            lcCurrentOrder = new frmCurrentOrders();
+            lcCurrentOrder.Show();
         }
     }
 

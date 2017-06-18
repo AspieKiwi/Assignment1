@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace BookUniversal
+namespace BookStoreUniversal
 {
     public sealed partial class ucFiction : UserControl, IBookControl
     {

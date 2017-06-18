@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 
-namespace BookUniversal
+namespace BookStoreUniversal
 {
     class ServiceClient
     {

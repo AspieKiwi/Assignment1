@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace BookUniversal
+namespace BookStoreUniversal
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -71,7 +71,7 @@ namespace BookUniversal
             txtType.Text = _Book.BookType.ToString();
             txtQuantity.Text = _Book.StockQuantity.ToString();
             txtPrice.Text = _Book.PricePerItem.ToString();
-            //(ctcBookDetails.Content as IBookControl).UpdateControl(prBook);
+            (ctcBookDetails.Content as IBookControl).UpdateControl(prBook);
         }
 
         private void PushData()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 
-namespace BookUniversal
+namespace BookStoreWindows
 {
     class ServiceClient
     {
@@ -72,41 +72,48 @@ namespace BookUniversal
 
         // ******************* for order *****************
 
-        //internal async static Task<List<clsOrder>> GetOrderListAsync()
-        //{
-        //    using (HttpClient lcHttpClient = new HttpClient())
-        //        return JsonConvert.DeserializeObject<List<clsOrder>>
-        //            (await lcHttpClient.GetStringAsync
-        //            ("http://localhost:60064/api/book/GetOrderList/"));
-        //}
+        internal async static Task<List<clsOrder>> GetOrderListAsync()
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<List<clsOrder>>
+                    (await lcHttpClient.GetStringAsync
+                    ("http://localhost:60064/api/book/GetOrderList/"));
+        }
 
-        //internal async static Task<clsOrder> GetOrderAsync(int prOrderID)
-        //{
-        //    using (HttpClient lcHttpClient = new HttpClient())
-        //        return JsonConvert.DeserializeObject<clsOrder>
-        //            (await lcHttpClient.GetStringAsync
-        //            ("http://localhost:60064/api/book/GetOrder?orderId=" + prOrderID));
-        //}
+        internal async static Task<clsOrder> GetOrderAsync(int prOrderID)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<clsOrder>
+                    (await lcHttpClient.GetStringAsync
+                    ("http://localhost:60064/api/book/GetOrder?orderId=" + prOrderID));
+        }
 
-        //internal static async Task<string> InsertOrderAsync(clsOrder prOrder)
-        //{
-        //    return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostBook", "POST");
-        //}
+        internal async static Task<clsOrder> GetOrdersAsync()
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<clsOrder>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/book/GetOrders"));
+        }
 
-        //internal static async Task<string> UpdateOrderAsync(clsOrder prOrder)
-        //{
-        //    return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PutBook", "PUT");
-        //}
+        internal static async Task<string> InsertOrderAsync(clsOrder prOrder)
+        {
+            return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostBook", "POST");
+        }
 
-        //internal static async Task<string> DeleteOrderAsync(int prOrderID)
-        //{
-        //    using (HttpClient lcHttpClient = new HttpClient())
-        //    {
-        //        HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
-        //            ($"http://localhost:60064/api/book/DeleteOrder?orderId=" + prOrderID);
-        //        return await lcRespMessage.Content.ReadAsStringAsync();
-        //    }
-        //}
+        internal static async Task<string> UpdateOrderAsync(clsOrder prOrder)
+        {
+            return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PutBook", "PUT");
+        }
+
+        internal static async Task<string> DeleteOrderAsync(clsOrder prOrder)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+            {
+                HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
+                    ($"http://localhost:60064/api/BOok/DeleteOrder?BookISBN={prOrder.BookISBN}&CustomerName={prOrder.CustomerName}");
+                return await lcRespMessage.Content.ReadAsStringAsync();
+            }
+        }
 
         internal async static Task<long> GetBookISBNAsync(long prISBN)
         {

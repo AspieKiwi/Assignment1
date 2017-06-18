@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookUniversal
+namespace BookStoreUniversal
 {
 
     public class clsAuthor
@@ -33,7 +33,7 @@ namespace BookUniversal
 
         public override string ToString()
         {
-            return BookType;// + "\t" + DateLastModified.ToString("d");
+            return BookTitle + "\t" + "\t" + BookType + "\t" + "\t" + DateLastModified.ToString("d");
         }
 
         public static readonly string FACTORY_PROMPT = "Enter F for Fiction and N for Non-Fiction";

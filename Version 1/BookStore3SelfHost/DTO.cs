@@ -29,6 +29,7 @@ namespace BookStore3SelfHost
 
     public class clsOrder
     {
+
         public int OrderID { get; set; }
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
@@ -36,6 +37,12 @@ namespace BookStore3SelfHost
         public float OrderQuantity { get; set; }
         public DateTime OrderDate { get; set; }
         public long BookISBN { get; set; }
+        public List<clsOrder> OrderList { get; set; }
+
+        public override string ToString()
+        {
+            return OrderID + "\t";
+        }
 
     }
 }
