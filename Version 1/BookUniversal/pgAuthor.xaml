@@ -12,12 +12,14 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="Author Details" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" Text="Country:" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstBoxBooks" HorizontalAlignment="Left" Height="365" Margin="6,146,0,0" VerticalAlignment="Top" Width="228" RequestedTheme="Light" SelectionChanged="lstBoxBooks_SelectionChanged" FontSize="10" />
-        <Button x:Name="btnOrder" Content="Order" HorizontalAlignment="Left" Margin="239,479,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
+        <ListBox x:Name="lstBoxBooks" HorizontalAlignment="Left" Height="333" Margin="6,178,0,0" VerticalAlignment="Top" Width="344" RequestedTheme="Light" SelectionChanged="lstBoxBooks_SelectionChanged" FontSize="7" />
+        <Button x:Name="btnOrder" Content="Order" HorizontalAlignment="Left" Margin="239,13,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
         <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="21,521,0,0" VerticalAlignment="Top" Width="329">
             <TextBlock x:Name="txbMessage" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Messages" VerticalAlignment="Top" Width="329"/>
         </ScrollViewer>
-        <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="100,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
-        <TextBox x:Name="txbCountry" HorizontalAlignment="Left" Margin="100,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+        <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="100,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="198"/>
+        <TextBox x:Name="txbCountry" HorizontalAlignment="Left" Margin="100,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="198"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="21,153,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="169,153,0,0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top"/>
     </Grid>
 </Page>

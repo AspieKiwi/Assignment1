@@ -13,23 +13,24 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
 
 namespace BookStoreUniversal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    // Name: Rebecca Stephens
+    // Date: 19/06/17
+    // Notes: This is the order page which sets the data in the boxes and then pushes the new data
+
     public sealed partial class pgOrder : Page
     {
+        public delegate void LoadBookControlDelegate(clsAllBooks prBooks);
         private clsAllBooks _Book;
         private clsOrder _Order;
+
         public pgOrder()
         {
             this.InitializeComponent();
         }
-
-        public delegate void LoadBookControlDelegate(clsAllBooks prBooks);
 
         public void DispatchBookForm(clsAllBooks prBooks)
         {
@@ -69,7 +70,7 @@ namespace BookStoreUniversal
             txtISBN.Text = _Book.ISBN.ToString();
             txtTitle.Text = _Book.BookTitle;
             txtType.Text = _Book.BookType.ToString();
-            txtQuantity.Text = _Book.StockQuantity.ToString();
+            txtStock.Text = _Book.StockQuantity.ToString();
             txtPrice.Text = _Book.PricePerItem.ToString();
             (ctcBookDetails.Content as IBookControl).UpdateControl(prBook);
         }
@@ -123,11 +124,21 @@ namespace BookStoreUniversal
             bool lcResult = true;
             if (string.IsNullOrEmpty(txtName.Text))
                 lcResult = false;
+            if (string.IsNullOrEmpty(txtEmail.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtISBN.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtPrice.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtQuantity.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtStock.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtTitle.Text))
+                lcResult = false;
+            if (string.IsNullOrEmpty(txtType.Text))
+                lcResult = false;
             return lcResult;
         }
-
-
-
-        // do validation here
     }
 }

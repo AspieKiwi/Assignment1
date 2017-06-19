@@ -28,19 +28,6 @@ namespace BookStoreUniversal
                     ("http://localhost:60064/api/book/GetAuthor?Name=" + prAuthorName));
         }
 
-
-        internal async static Task<List<clsAuthor>> GetAuthorsAsync()
-        {
-            using (HttpClient lcHttpClient = new HttpClient())
-                return JsonConvert.DeserializeObject<List<clsAuthor>>
-                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/book/GetAuthors/"));
-        }
-
-        internal async static Task<string> InsertBookAsync(clsAllBooks prBook)
-        {
-            return await InsertOrUpdateAsync(prBook, "http://localhost:60064/api/book/PostBook", "POST");
-        }
-
         internal async static Task<string> UpdateBookAsync(clsAllBooks prBook)
         {
             return await InsertOrUpdateAsync(prBook, "http://localhost:60064/api/book/PutBook", "PUT");
@@ -58,43 +45,9 @@ namespace BookStoreUniversal
             }
         }
 
-        internal async static Task<string> InsertAuthorAsync(clsAuthor prAuthor)
-        {
-            return await InsertOrUpdateAsync(prAuthor, "http://localhost:60064/api/book/PutAuthor", "POST");
-        }
-
-        internal async static Task<string> DeleteBookAsync(clsAllBooks prBook)
-        {
-            using (HttpClient lcHttpClient = new HttpClient())
-            {
-                HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
-                    ($"http://localhost:60064/api/book/DeleteBook?BookTitle={prBook.BookTitle}&AuthorName={prBook.AuthorName}");
-                return await lcRespMessage.Content.ReadAsStringAsync();
-            }
-        }
-
         internal static async Task<string> InsertOrderAsync(clsOrder prOrder)
         {
             return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/book/PostOrder", "POST");
-        }
-
-        internal async static Task<string> UpdateOrderBookAsync(clsAllBooks prBook)
-        {
-            return await InsertOrUpdateAsync(prBook, "http://localhost:60064/api/book/PutOrderBook", "PUT");
-        }
-
-        internal async static Task<clsOrder> GetOrdersAsync()
-        {
-            using (HttpClient lcHttpClient = new HttpClient())
-                return JsonConvert.DeserializeObject<clsOrder>
-                    (await lcHttpClient.GetStringAsync("http://localhost:60064/book/GetOrders/"));
-        }
-
-        internal async static Task<List<int>> GetBookQuantityAsync(Int64 prBookID)
-        {
-            using (HttpClient lcHttpClient = new HttpClient())
-                return JsonConvert.DeserializeObject<List<int>>
-                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/book/GetBookQuantity?BookISBN=" + prBookID));
         }
     }
 }

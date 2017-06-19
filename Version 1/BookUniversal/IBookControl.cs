@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BookStoreUniversal
+    // Author: Rebecca Stephens
+    // Date: 19/09/17
+
 {
     interface IBookControl
     {

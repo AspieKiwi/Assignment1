@@ -21,13 +21,11 @@ namespace BookStoreUniversal
     // Notes: This page displays the details associated with a particular author.
     public sealed partial class pgAuthor : Page
     {
+        private clsAuthor _Author;
         public pgAuthor()
         {
             this.InitializeComponent();
         }
-
-        private clsAuthor _Author;
-
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             try
@@ -54,23 +52,6 @@ namespace BookStoreUniversal
             base.OnNavigatingFrom(e);
         }
 
-        private async void UpdatePage(string prAuthorName)
-        {
-            try
-            {
-                SetDetails(await ServiceClient.GetAuthorAsync(prAuthorName));
-            }
-            catch (Exception ex)
-            {
-                txbMessage.Text = ex.Message;
-            }
-        }
-
-        private void SetDetails(clsAuthor prAuthor)
-        {
-            _Author = prAuthor;
-            UpdateDisplay();
-        }
 
         private void UpdateDisplay()
         {

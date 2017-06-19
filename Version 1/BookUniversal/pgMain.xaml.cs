@@ -17,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BookStoreUniversal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    // Author: Rebecca Stephens
+    // Date: 19/06/17
+    // Notes: This is the main page for the UWP app
     public sealed partial class pgMain : Page
     {
         public pgMain()

@@ -8,27 +8,27 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Book Store" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="Enter Your Details" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="43,60,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="47,102,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="104,60,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="104,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="10,340,0,0" TextWrapping="Wrap" Text="Order Details:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="27,475,0,0" TextWrapping="Wrap" Text="Books In Stock: " VerticalAlignment="Top"/>
-        <TextBox x:Name="txtStock" HorizontalAlignment="Left" Margin="189,463,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="117"/>
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="29,545,0,0" TextWrapping="Wrap" Text="Order Quantity: " VerticalAlignment="Top"/>
-        <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Margin="189,545,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="117"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="29,508,0,0" TextWrapping="Wrap" Text="Price Per Book:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="189,508,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" RenderTransformOrigin="-0.763,-0.199" Width="117"/>
+        <TextBlock x:Name="txbBookStore" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Book Store" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbDetails" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="Enter Your Details" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbName" HorizontalAlignment="Left" Margin="43,60,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbEmail" HorizontalAlignment="Left" Margin="47,102,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="104,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="104,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBlock x:Name="txbOrder" HorizontalAlignment="Left" Margin="10,236,0,0" TextWrapping="Wrap" Text="Order Details:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbStock" HorizontalAlignment="Left" Margin="27,475,0,0" TextWrapping="Wrap" Text="Books In Stock: " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtStock" HorizontalAlignment="Left" Margin="189,463,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="117"/>
+        <TextBlock x:Name="txbOrderQuantity" HorizontalAlignment="Left" Margin="29,545,0,0" TextWrapping="Wrap" Text="Order Quantity: " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Margin="189,545,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="117"/>
+        <TextBlock x:Name="txbPricePerBook" HorizontalAlignment="Left" Margin="29,508,0,0" TextWrapping="Wrap" Text="Price Per Book:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="189,508,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.763,-0.199" Width="117"/>
         <Button x:Name="btnOrder" Content="Commit Order" HorizontalAlignment="Left" Margin="141,582,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
-        <ContentControl x:Name="ctcBookDetails" Content="ctcBookDetails" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top" Height="38" Width="340"/>
-        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="47,157,0,0" TextWrapping="Wrap" Text="ISBN: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="43,200,0,0" TextWrapping="Wrap" Text="Title: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="40,237,0,0" TextWrapping="Wrap" Text="Type: " VerticalAlignment="Top"/>
-        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="104,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="104,200,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="txtType" HorizontalAlignment="Left" Margin="104,237,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
+        <ContentControl x:Name="ctcBookDetails" Content="ctcBookDetails" HorizontalAlignment="Left" Margin="10,396,0,0" VerticalAlignment="Top" Height="38" Width="340"/>
+        <TextBlock x:Name="txbISBN" HorizontalAlignment="Left" Margin="47,256,0,0" TextWrapping="Wrap" Text="ISBN: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbTitle" HorizontalAlignment="Left" Margin="43,299,0,0" TextWrapping="Wrap" Text="Title: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbType" HorizontalAlignment="Left" Margin="40,336,0,0" TextWrapping="Wrap" Text="Type: " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="104,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="104,299,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="txtType" HorizontalAlignment="Left" Margin="104,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
 
     </Grid>
 </Page>

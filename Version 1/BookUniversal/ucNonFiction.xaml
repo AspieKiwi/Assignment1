@@ -10,8 +10,8 @@
     d:DesignWidth="400">
 
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="60,120,0,0" TextWrapping="Wrap" Text="Dewey: " VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDewey" HorizontalAlignment="Left" Margin="140,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="130"/>
+        <TextBlock x:Name="txbDewey" HorizontalAlignment="Left" Margin="60,120,0,0" TextWrapping="Wrap" Text="Dewey: " VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDewey" HorizontalAlignment="Left" Margin="140,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130"/>
 
     </Grid>
 </UserControl>

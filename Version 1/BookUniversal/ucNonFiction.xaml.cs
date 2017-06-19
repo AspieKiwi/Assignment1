@@ -13,20 +13,28 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+
 
 namespace BookStoreUniversal
 {
-    public sealed partial class ucNonFiction : UserControl
+    //Author: Rebecca Stephens
+    //Date: 19/06/17
+    //Note: user control for fiction type books. Doesn't current work
+    public sealed partial class ucNonFiction : UserControl, IBookControl
     {
         public ucNonFiction()
         {
             this.InitializeComponent();
         }
 
+        public void PushData(clsAllBooks prBook)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateControl(clsAllBooks prBook)
         {
-            txtDewey.Text = prBook.BookDewey.ToString();
+            throw new NotImplementedException();
         }
     }
 }

@@ -13,15 +13,22 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace BookStoreUniversal
 {
+    //Author: Rebecca Stephens
+    //Date: 19/06/17
+    //Notes: User control for Fiction type but doesn't implement due to string error.
     public sealed partial class ucFiction : UserControl, IBookControl
     {
         public ucFiction()
         {
             this.InitializeComponent();
+        }
+
+        public void PushData(clsAllBooks prBook)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateControl(clsAllBooks prBook)
