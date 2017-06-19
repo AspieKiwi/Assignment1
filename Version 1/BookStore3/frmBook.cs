@@ -31,7 +31,7 @@ namespace BookStoreWindows
             InitializeComponent();
         }
 
-        public void SetDetails(clsAllBooks prBook)//(string prISBN, DateTime prDate, decimal prValue, decimal prQuantity, decimal prPageNumbers)
+        public void SetDetails(clsAllBooks prBook)
         {
             _Book = prBook;
             _VaidationError = new List<string>();
@@ -39,14 +39,6 @@ namespace BookStoreWindows
             ShowDialog();
         }
 
-        public void GetDetails(ref string prISBN, ref DateTime prDate, ref decimal prValue, ref decimal prQuantity, ref decimal prPageNumbers)
-        {
-            //prISBN = txtISBN.Text;
-            //prDate = Convert.ToDateTime(txtDate.Text);
-            //prValue = Convert.ToDecimal(txtValue.Text);
-            //prQuantity = Convert.ToDecimal(txtQuantity.Text);
-            //prPageNumbers = Convert.ToDecimal(txtPageNumbers.Text);
-        }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -79,25 +71,10 @@ namespace BookStoreWindows
             {
                 MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
-            //if (isValid())
-            //{
-            //    pushData();
-            //    if (txtTitle.Enabled)
-            //        MessageBox.Show(await ServiceClient.InsertBookAsync(_Book));
-            //    else
-            //        MessageBox.Show(await ServiceClient.UpdateBookAsync(_Book));
-            //    Close();
-            //    //}
-            //    //if (isValid() == true)
-            //    //{
-            //    //    DialogResult = DialogResult.OK;
-            //    //    Close();
-            //}
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //DialogResult = DialogResult.Cancel;
             Close();
         }
 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lstAuthors = new System.Windows.Forms.ListBox();
-            this.lblValue = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -43,15 +42,6 @@
             this.lstAuthors.Size = new System.Drawing.Size(213, 244);
             this.lstAuthors.TabIndex = 0;
             this.lstAuthors.DoubleClick += new System.EventHandler(this.lstAuthors_DoubleClick);
-            // 
-            // lblValue
-            // 
-            this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(223, 40);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(46, 17);
-            this.lblValue.TabIndex = 1;
-            this.lblValue.Text = "label1";
             // 
             // btnQuit
             // 
@@ -80,20 +70,17 @@
             this.ClientSize = new System.Drawing.Size(384, 415);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnQuit);
-            this.Controls.Add(this.lblValue);
             this.Controls.Add(this.lstAuthors);
             this.Name = "frmMain";
-            this.Text = "Main";
+            this.Text = "Book Store";
             this.Load += new System.EventHandler(this.frmMain_Load_1);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ListBox lstAuthors;
-        private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnOrder;
     }

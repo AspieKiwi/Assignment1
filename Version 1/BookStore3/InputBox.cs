@@ -26,15 +26,6 @@ namespace BookStoreWindows
         {
             _Answer = txtAnswer.Text;
             DialogResult = DialogResult.OK;
-            //if (txtAnswer.Text.Length > 0 && txtAnswer.Text.Length < 2)
-            //{
-            //    _Answer = txtAnswer.Text;
-            //    DialogResult = DialogResult.OK;
-            //}
-            //else
-            //{
-            //    lblError.Text = "Please enter one character into the text box.";
-            //}
         }
         public string Answer
         {

@@ -59,12 +59,6 @@ namespace BookStoreWindows
         public static clsAllBooks NewBook(char prChoice)
         {
             return new clsAllBooks() { BookType = Char.ToUpper(prChoice) };
-            //switch (char.ToUpper(prChoice))
-            //{
-            //    case 'F': return new clsAllBooks { BookType = 'F' };
-            //    case 'N': return new clsAllBooks { BookType = 'N' };
-            //    default: return null;
-            //}
         }
 
     }

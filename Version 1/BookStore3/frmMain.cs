@@ -14,8 +14,6 @@ namespace BookStoreWindows
     {
         private static readonly frmMain _Instance = new frmMain();
 
-        //private clsAuthorList _AuthorList = new clsAuthorList();
-
         public delegate void Notify(string prBookName);
 
         public event Notify BookNameChanged;
@@ -29,15 +27,6 @@ namespace BookStoreWindows
             get { return frmMain._Instance; }
         }
 
-        private void updateTitle(string prBookName)
-        {
-            if (!string.IsNullOrEmpty(prBookName))
-                Text = "Book Storage (v1) - " + prBookName;
-        }
-
-        //private clsPublisherList _PublisherList = new clsPublisherList();
-        //private const string fileName = "books.xml";
-
         public async void updateDisplay()
         {
             try
@@ -49,79 +38,18 @@ namespace BookStoreWindows
             {
                 MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
-            //string[] lcDisplayList = new string[_AuthorList.Count];
-           // _AuthorList.Keys.CopyTo(lcDisplayList, 0);
-            //lstAuthors.DataSource = lcDisplayList;
-            //lblValue.Text = Convert.ToString(_AuthorList.GetTotalValue());
-            //string[] lcDisplayList = new string[_PublisherList.Count];
-
-            //lstPublishers.DataSource = null;
-            //_PublisherList.Keys.CopyTo(lcDisplayList, 0);
-            //lstPublishers.DataSource = lcDisplayList;
-            //lblValue.Text = Convert.ToString(_PublisherList.GetTotalValue());
         }
 
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Close();
-            //try
-            //{
-            //    //_AuthorList.Save();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "File Save Error");
-            //}
-            //Close();
-            //Save();
-            //Close();
         }
 
-        //private void Save()
-        //{
-        //    try
-        //    {
-        //        System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-        //        System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-        //            new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
-
-        //        lcFormatter.Serialize(lcFileStream, thePublisherList);
-        //        lcFileStream.Close();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message, "File Save Error");
-        //    }
-        //}
-        //private void Retrieve()
-        //{
-        //    try
-        //    {
-        //        System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-        //        System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
-        //            new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message, "File Retrieve Error");
-        //    }
-        //}
+        
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    //_AuthorList = clsAuthorList.RetrieveAuthorList();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Flie retrieve error");
-            //}
             
-            //BookNameChanged += new Notify(updateTitle);
-            //BookNameChanged(_AuthorList.BookName);
-            //Retrieve();
-            //UpdateDisplay();
         }
 
         private void frmMain_Load_1(object sender, EventArgs e)

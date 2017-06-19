@@ -44,8 +44,6 @@ namespace BookStoreWindows
         public void UpdateDisplay(clsOrder prOrder)
         {
             _Order = prOrder;
-            //decimal lcTotalOrderValue = _Order.OrderList.Select(_Order = _Order.ValueOfOrder).Sum();
-            //lblValue.Text = "$" + lcTotalOrderValue.ToString();
             lstOrders.DataSource = null;
             if (_Order.OrderList != null)
                 lstOrders.DataSource = _Order.OrderList;
